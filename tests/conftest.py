@@ -4,12 +4,18 @@ conftest.py — Shared pytest fixtures for the Deft Directive testbed.
 Import strategy: tests import from `run` (the shim in run.py) which loads
 the extension-less `run` CLI file via importlib. See run.py for details.
 
+The shim registers the real CLI module as ``sys.modules['deft_run']``.
+All monkeypatching must target that internal module (returned by the
+``deft_internal`` fixture) so that intra-module calls are intercepted.
+
 Author: Scott Adams (msadams) — 2026-03-09
 """
 
 import os
-import tempfile
+import sys
+from collections.abc import Callable
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -82,6 +88,18 @@ def deft_module():
     return module
 
 
+@pytest.fixture(scope="session")
+def deft_internal(deft_module: Any) -> Any:
+    """Return the *real* CLI module (``deft_run``) loaded by the shim.
+
+    The run.py shim registers the extension-less ``run`` file as
+    ``sys.modules['deft_run']``.  All ``monkeypatch.setattr`` calls
+    must target this module so that intra-module function calls (e.g.
+    ``cmd_bootstrap`` calling ``read_input``) are intercepted.
+    """
+    return sys.modules["deft_run"]
+
+
 @pytest.fixture
 def isolated_env(tmp_project_dir: Path, monkeypatch: pytest.MonkeyPatch):
     """Combine tmp_project_dir with env var overrides for CLI isolation.
@@ -95,3 +113,73 @@ def isolated_env(tmp_project_dir: Path, monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setenv("DEFT_PROJECT_PATH", str(project_md))
     monkeypatch.chdir(tmp_project_dir)
     return tmp_project_dir
+
+
+# ---------------------------------------------------------------------------
+# Phase 3 — CLI test helpers
+# ---------------------------------------------------------------------------
+
+
+def run_command(
+    deft_internal: Any,
+    cmd_name: str,
+    args: list[str],
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> dict[str, Any]:
+    """Call a ``cmd_*`` function on *deft_internal* and capture its output.
+
+    Args:
+        deft_internal: The real CLI module (``deft_run``).
+        cmd_name: Name of the command function, e.g. ``"cmd_bootstrap"``.
+        args: Argument list to pass to the command.
+        tmp_path: Temporary directory used as the working directory.
+        capsys: Pytest capture fixture for stdout/stderr.
+
+    Returns:
+        A dict with keys ``return_code``, ``stdout``, and ``stderr``.
+    """
+    func: Callable[..., int] = getattr(deft_internal, cmd_name)
+    prev_cwd = os.getcwd()
+    os.chdir(tmp_path)
+    try:
+        return_code = func(args)
+    finally:
+        os.chdir(prev_cwd)
+
+    captured = capsys.readouterr()
+    return {
+        "return_code": return_code,
+        "stdout": captured.out,
+        "stderr": captured.err,
+    }
+
+
+def mock_user_input(
+    monkeypatch: pytest.MonkeyPatch,
+    deft_internal: Any,
+    responses: dict[str, Callable[..., Any]],
+) -> None:
+    """Patch interactive input functions on *deft_internal* with predetermined responses.
+
+    *responses* is a dict whose keys are function names (``ask_input``,
+    ``ask_choice``, ``ask_confirm``) and whose values are callables that
+    will replace the real implementation.  The legacy aliases ``read_input``
+    and ``read_yn`` are patched automatically to stay in sync.
+
+    **Important**: patches are applied to the ``deft_run`` module (not the
+    run.py wrapper) so that intra-module calls are intercepted.
+
+    Args:
+        monkeypatch: Pytest monkeypatch fixture.
+        deft_internal: The real CLI module (``deft_run``).
+        responses: Mapping of function name to replacement callable.
+    """
+    for name, replacement in responses.items():
+        monkeypatch.setattr(deft_internal, name, replacement)
+
+    # Keep legacy aliases consistent with the canonical names.
+    if "ask_input" in responses:
+        monkeypatch.setattr(deft_internal, "read_input", responses["ask_input"])
+    if "ask_confirm" in responses:
+        monkeypatch.setattr(deft_internal, "read_yn", responses["ask_confirm"])

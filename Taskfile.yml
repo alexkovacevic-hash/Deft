@@ -7,7 +7,7 @@ includes:
 
 vars:
   PROJECT_NAME: deft
-  VERSION: 0.3.0
+  VERSION: 0.5.0
 
 tasks:
   default:
@@ -23,21 +23,35 @@ tasks:
       - find . -name "*.md" -not -path "./backup/*" -not -path "./.git/*" | xargs -I {} sh -c 'echo "✓ {}"'
       - echo "✓ All markdown files validated"
 
-  lint:
-    desc: Lint markdown files (requires markdownlint-cli)
+  test:
+    desc: Run the test suite
     cmds:
-      - |
-        if command -v markdownlint >/dev/null 2>&1; then
-          markdownlint '**/*.md' --ignore backup --ignore node_modules
-        else
-          echo "⚠ markdownlint not installed. Install with: npm install -g markdownlint-cli"
-          exit 0
-        fi
+      - uv run pytest tests/ --no-cov
+    silent: false
+
+  test:coverage:
+    desc: Run tests with coverage report (fails if < 75%)
+    cmds:
+      - uv run pytest tests/ --cov --cov-report=term-missing --cov-report=html
+    silent: false
+
+  fmt:
+    desc: Format Python code
+    cmds:
+      - uv run ruff format .
+      - uv run black .
+
+  lint:
+    desc: Lint and type-check Python code
+    cmds:
+      - uv run ruff check .
+      - uv run mypy run.py
 
   check:
-    desc: Run all pre-commit checks
+    desc: Run all pre-commit checks (lint + test)
     deps:
-      - validate
+      - lint
+      - test
     cmds:
       - echo "✓ All checks passed"
 

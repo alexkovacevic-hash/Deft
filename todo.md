@@ -4,9 +4,21 @@ Deferred work items captured during planning. See SPECIFICATION.md for Phase 1 s
 
 ---
 
-## Phase 1 — Testbed (In Progress)
+## Phase 1 — Testbed (Complete)
 
-See `SPECIFICATION.md` for full implementation plan.
+Completed 2026-03-27. See `SPECIFICATION.md` for full implementation plan.
+
+**Results:** 89 tests (75 passed, 14 xfailed, 0 failures). All xfails documented
+in `tests/content/snapshots/known_failures.json`. Lint (`ruff check`) and
+type-check (`mypy run.py`) pass clean. Taskfile integration working:
+`task check` gates on lint + test.
+
+**Phases delivered:**
+1. Python project foundation (`pyproject.toml`, fixtures, directory scaffold)
+2. Content integrity suite (structure, standards, contracts, shape checks)
+3. CLI regression suite (bootstrap, project, validate, doctor)
+4. Taskfile integration (`task test`, `task lint`, `task fmt`, `task check`)
+5. Baseline finalization (this phase)
 
 ---
 
@@ -70,7 +82,7 @@ See `SPECIFICATION.md` for full implementation plan.
 
 ### Rename: "Warping" → "Deft Directive"
 - `README.md` still says "Warping Process", "What is Warping?", "Contributing to Warping", etc.
-- `Taskfile.yml` has `PROJECT_NAME: warping` and `VERSION: 0.2.0`
+- `Taskfile.yml` had `PROJECT_NAME: warping` and `VERSION: 0.2.0` (fixed to `deft` / `0.5.0` in Phase 1)
 - `warping.sh` still present — remove or deprecate (replaced by `run` in v0.5.0)
 - `CHANGELOG.md` header says "Warping framework"
 - Verify: `test_standards.py` xfail for Warping references should flip to passing

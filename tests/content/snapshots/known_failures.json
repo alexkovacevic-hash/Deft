@@ -1,0 +1,67 @@
+{
+  "description": "Known failures for the Deft content test suite. Tests matching these entries are marked xfail.",
+  "missing_strategy_files": {
+    "reason": "Planned but not yet implemented (listed as future in strategies/README.md)",
+    "files": [
+      "strategies/rapid.md",
+      "strategies/enterprise.md"
+    ]
+  },
+  "deprecated_path_references": {
+    "reason": "Files that still reference the deprecated core/user.md path",
+    "files": [
+      "SKILL.md",
+      "SPECIFICATION.md",
+      "CHANGELOG.md",
+      "REFERENCES.md",
+      "main.md"
+    ]
+  },
+  "warping_references": {
+    "reason": "Files outside old/ that still contain warping (legacy project name)",
+    "files": [
+      "todo.md",
+      "SPECIFICATION.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "contract_xfails": {
+    "strategy_index_links": {
+      "reason": "rapid.md and enterprise.md linked in strategies/README.md but files do not exist yet",
+      "files": ["strategies/rapid.md", "strategies/enterprise.md"]
+    },
+    "see_also_broken_links": {
+      "reason": "Some See also / internal links resolve outside repo or target missing files",
+      "files": ["PROJECT.md", "tools/taskfile-migration.md"]
+    },
+    "discuss_md_not_in_index": {
+      "reason": "strategies/discuss.md exists but is not listed in strategies/README.md table"
+    }
+  },
+  "shape_xfails": {
+    "language_files": {
+      "reason": "Non-standard language files that do not follow the ## Standards / ## Commands / ## Patterns shape",
+      "files": [
+        "languages/6502-DASM.md",
+        "languages/commands.md",
+        "languages/markdown.md",
+        "languages/mermaid.md"
+      ]
+    },
+    "strategy_files": {
+      "reason": "Strategy files that do not follow the ## When to Use / ## Workflow shape",
+      "files": [
+        "strategies/discuss.md",
+        "strategies/research.md"
+      ]
+    },
+    "interface_files": {
+      "reason": "Interface files missing ## Core Architecture or ## Framework Selection",
+      "files": [
+        "interfaces/cli.md",
+        "interfaces/rest.md",
+        "interfaces/web.md"
+      ]
+    }
+  }
+}
