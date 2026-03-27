@@ -18,10 +18,10 @@ import pytest
 
 from tests.conftest import mock_user_input, run_command
 
-
 # ---------------------------------------------------------------------------
 # Shared helper — set up mocked inputs for cmd_bootstrap
 # ---------------------------------------------------------------------------
+
 
 def _patch_bootstrap_inputs(
     monkeypatch: pytest.MonkeyPatch,
@@ -56,10 +56,14 @@ def _patch_bootstrap_inputs(
     def fake_confirm(prompt_text: str, default: bool = False) -> bool:
         return False
 
-    mock_user_input(monkeypatch, deft_internal, {
-        "ask_input": fake_input,
-        "ask_confirm": fake_confirm,
-    })
+    mock_user_input(
+        monkeypatch,
+        deft_internal,
+        {
+            "ask_input": fake_input,
+            "ask_confirm": fake_confirm,
+        },
+    )
 
 
 # ---------------------------------------------------------------------------

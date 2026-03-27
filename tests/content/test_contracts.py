@@ -93,15 +93,10 @@ def test_strategy_index_links_resolve(deft_root: Path) -> None:
                 broken.append(f"  [{display}]({target})")
 
     if broken:
-        pytest.fail(
-            "Broken links in strategies/README.md:\n" + "\n".join(broken)
-        )
+        pytest.fail("Broken links in strategies/README.md:\n" + "\n".join(broken))
 
     if xfail_broken:
-        pytest.xfail(
-            "Expected missing future strategy files:\n"
-            + "\n".join(xfail_broken)
-        )
+        pytest.xfail("Expected missing future strategy files:\n" + "\n".join(xfail_broken))
 
 
 # ---------------------------------------------------------------------------
@@ -125,9 +120,7 @@ def test_see_also_links_resolve(deft_root: Path) -> None:
     for md in sorted(deft_root.rglob("*.md")):
         parts = md.relative_to(deft_root).parts
         if any(
-            p.startswith(".")
-            or p in {"__pycache__", "node_modules", ".venv", "old"}
-            for p in parts
+            p.startswith(".") or p in {"__pycache__", "node_modules", ".venv", "old"} for p in parts
         ):
             continue
 
@@ -149,9 +142,7 @@ def test_see_also_links_resolve(deft_root: Path) -> None:
         pytest.fail("Broken 'See also' links:\n" + "\n".join(broken))
 
     if xfail_broken:
-        pytest.xfail(
-            "Known broken 'See also' links:\n" + "\n".join(xfail_broken)
-        )
+        pytest.xfail("Known broken 'See also' links:\n" + "\n".join(xfail_broken))
 
 
 # ---------------------------------------------------------------------------
@@ -168,6 +159,4 @@ def test_discuss_md_listed_in_strategy_index(deft_root: Path) -> None:
     readme = deft_root / "strategies" / "README.md"
     assert readme.exists()
     text = readme.read_text(encoding="utf-8")
-    assert "discuss.md" in text, (
-        "strategies/discuss.md not listed in strategies/README.md"
-    )
+    assert "discuss.md" in text, "strategies/discuss.md not listed in strategies/README.md"

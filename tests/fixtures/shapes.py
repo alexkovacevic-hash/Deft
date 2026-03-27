@@ -9,7 +9,7 @@ Author: Phase 2 — Content Integrity Suite
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True)

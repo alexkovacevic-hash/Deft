@@ -15,10 +15,8 @@ from __future__ import annotations
 
 import json
 import re
-import sys
 from pathlib import Path
 from typing import Any
-
 
 # ---------------------------------------------------------------------------
 # Patterns
@@ -35,6 +33,7 @@ def _relative(path: Path, root: Path) -> str:
 # ---------------------------------------------------------------------------
 # Core logic
 # ---------------------------------------------------------------------------
+
 
 def capture(root: Path) -> dict[str, Any]:
     """Walk *root* and return a snapshot dict.

@@ -39,12 +39,8 @@ def _load_known_failures() -> dict[str, Any]:
 
 
 _KNOWN = _load_known_failures()
-_DEPRECATED_PATH_FILES = set(
-    _KNOWN.get("deprecated_path_references", {}).get("files", [])
-)
-_WARPING_FILES = set(
-    _KNOWN.get("warping_references", {}).get("files", [])
-)
+_DEPRECATED_PATH_FILES = set(_KNOWN.get("deprecated_path_references", {}).get("files", []))
+_WARPING_FILES = set(_KNOWN.get("warping_references", {}).get("files", []))
 
 
 # ---------------------------------------------------------------------------
@@ -61,9 +57,7 @@ def _collect_md_files(root: Path, subdir: str) -> list[Path]:
     d = root / subdir
     if not d.is_dir():
         return []
-    return sorted(
-        p for p in d.rglob("*.md") if p.name not in _RFC2119_EXCLUDED_NAMES
-    )
+    return sorted(p for p in d.rglob("*.md") if p.name not in _RFC2119_EXCLUDED_NAMES)
 
 
 def _relative(path: Path, root: Path) -> str:
@@ -77,8 +71,7 @@ def _all_md_files(root: Path) -> list[tuple[str, Path]]:
     for md in sorted(root.rglob("*.md")):
         parts = md.relative_to(root).parts
         if any(
-            p.startswith(".") or p in {"__pycache__", "node_modules", ".venv", "old"}
-            for p in parts
+            p.startswith(".") or p in {"__pycache__", "node_modules", ".venv", "old"} for p in parts
         ):
             continue
         results.append((_relative(md, root), md))
@@ -132,14 +125,11 @@ def test_no_deprecated_user_path(deft_root: Path) -> None:
     violations = []
     for rel, md in _all_md_files(deft_root):
         text = md.read_text(encoding="utf-8", errors="replace")
-        if "core/user.md" in text:
-            if rel not in _DEPRECATED_PATH_FILES:
-                violations.append(rel)
+        if "core/user.md" in text and rel not in _DEPRECATED_PATH_FILES:
+            violations.append(rel)
 
     if violations:
-        pytest.fail(
-            f"Unexpected deprecated core/user.md references in: {', '.join(violations)}"
-        )
+        pytest.fail(f"Unexpected deprecated core/user.md references in: {', '.join(violations)}")
 
 
 # ---------------------------------------------------------------------------
@@ -155,11 +145,8 @@ def test_no_warping_references(deft_root: Path) -> None:
     violations = []
     for rel, md in _all_md_files(deft_root):
         text = md.read_text(encoding="utf-8", errors="replace")
-        if "warping" in text.lower():
-            if rel not in _WARPING_FILES:
-                violations.append(rel)
+        if "warping" in text.lower() and rel not in _WARPING_FILES:
+            violations.append(rel)
 
     if violations:
-        pytest.fail(
-            f"Unexpected 'warping' references in: {', '.join(violations)}"
-        )
+        pytest.fail(f"Unexpected 'warping' references in: {', '.join(violations)}")

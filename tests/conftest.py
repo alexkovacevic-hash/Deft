@@ -13,9 +13,9 @@ Author: Scott Adams (msadams) — 2026-03-09
 
 import os
 import sys
-import tempfile
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Sequence, Tuple, Union
+from typing import Any
 
 import pytest
 
@@ -123,10 +123,10 @@ def isolated_env(tmp_project_dir: Path, monkeypatch: pytest.MonkeyPatch):
 def run_command(
     deft_internal: Any,
     cmd_name: str,
-    args: List[str],
+    args: list[str],
     tmp_path: Path,
     capsys: pytest.CaptureFixture[str],
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Call a ``cmd_*`` function on *deft_internal* and capture its output.
 
     Args:
@@ -158,7 +158,7 @@ def run_command(
 def mock_user_input(
     monkeypatch: pytest.MonkeyPatch,
     deft_internal: Any,
-    responses: Dict[str, Callable[..., Any]],
+    responses: dict[str, Callable[..., Any]],
 ) -> None:
     """Patch interactive input functions on *deft_internal* with predetermined responses.
 

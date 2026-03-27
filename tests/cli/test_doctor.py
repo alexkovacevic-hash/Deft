@@ -17,7 +17,6 @@ import pytest
 
 from tests.conftest import run_command
 
-
 # ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
@@ -48,7 +47,5 @@ def test_doctor_output_contains_checks(
     result = run_command(deft_internal, "cmd_doctor", [], tmp_path, capsys)
     stdout = result["stdout"]
 
-    has_check_symbol = any(sym in stdout for sym in ("\u2713", "\u26A0", "\u2717"))
-    assert has_check_symbol, (
-        "Expected at least one check-result symbol in doctor output"
-    )
+    has_check_symbol = any(sym in stdout for sym in ("\u2713", "\u26a0", "\u2717"))
+    assert has_check_symbol, "Expected at least one check-result symbol in doctor output"

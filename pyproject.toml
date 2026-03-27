@@ -41,8 +41,11 @@ exclude = [
     ".venv",
     "__pycache__",
     "run",        # extension-less CLI entry point — not linted in Phase 1
+    "run.py",     # import shim — unavoidable E402/I001/F403
     "warping.sh",
 ]
+
+[tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "PIE", "RET", "SIM"]
 
 [tool.black]

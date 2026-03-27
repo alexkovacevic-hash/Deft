@@ -31,9 +31,7 @@ def _extract_sections(text: str) -> list[str]:
 
 def _normalize(s: str) -> str:
     """Normalize a section title for comparison (lowercase, strip emoji)."""
-    cleaned = re.sub(
-        r"^[\U0001F300-\U0001FAFF\u2600-\u27BF\u2700-\u27BF]+\s*", "", s
-    )
+    cleaned = re.sub(r"^[\U0001F300-\U0001FAFF\u2600-\u27BF\u2700-\u27BF]+\s*", "", s)
     return cleaned.lower().strip()
 
 
@@ -52,10 +50,7 @@ def _check_shape(file_path: Path, schema: ShapeSchema) -> str | None:
     normalized = [_normalize(s) for s in sections]
 
     if schema.min_sections > 0 and len(sections) < schema.min_sections:
-        return (
-            f"Expected at least {schema.min_sections} ## section(s), "
-            f"found {len(sections)}"
-        )
+        return f"Expected at least {schema.min_sections} ## section(s), found {len(sections)}"
 
     if schema.required_sections:
         if schema.any_of:
@@ -74,10 +69,7 @@ def _check_shape(file_path: Path, schema: ShapeSchema) -> str | None:
                 if not any(_section_matches(n, req) for n in normalized)
             ]
             if missing:
-                return (
-                    f"Missing required sections: {missing}; "
-                    f"found sections: {sections}"
-                )
+                return f"Missing required sections: {missing}; found sections: {sections}"
 
     return None
 
@@ -120,14 +112,14 @@ _LANGUAGE_SHAPE_XFAIL: set[str] = {
 }
 
 _STRATEGY_SHAPE_XFAIL: set[str] = {
-    "strategies/discuss.md",   # alignment strategy, no Workflow section
+    "strategies/discuss.md",  # alignment strategy, no Workflow section
     "strategies/research.md",  # research strategy, uses Output not Workflow
 }
 
 _INTERFACE_SHAPE_XFAIL: set[str] = {
-    "interfaces/cli.md",   # uses ## Framework, not Core Architecture/Framework Selection
+    "interfaces/cli.md",  # uses ## Framework, not Core Architecture/Framework Selection
     "interfaces/rest.md",  # API design guide, no architecture section
-    "interfaces/web.md",   # component-oriented, uses ## Stack
+    "interfaces/web.md",  # component-oriented, uses ## Stack
 }
 
 
