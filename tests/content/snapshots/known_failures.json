@@ -1,0 +1,28 @@
+{
+  "description": "Known failures for the Deft content test suite. Tests matching these entries are marked xfail.",
+  "missing_strategy_files": {
+    "reason": "Planned but not yet implemented (listed as future in strategies/README.md)",
+    "files": [
+      "strategies/rapid.md",
+      "strategies/enterprise.md"
+    ]
+  },
+  "deprecated_path_references": {
+    "reason": "Files that still reference the deprecated core/user.md path",
+    "files": [
+      "SKILL.md",
+      "SPECIFICATION.md",
+      "CHANGELOG.md",
+      "REFERENCES.md",
+      "main.md"
+    ]
+  },
+  "warping_references": {
+    "reason": "Files outside old/ that still contain warping (legacy project name)",
+    "files": [
+      "todo.md",
+      "SPECIFICATION.md",
+      "CHANGELOG.md"
+    ]
+  }
+}

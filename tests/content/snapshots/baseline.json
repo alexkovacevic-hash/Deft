@@ -1,0 +1,4357 @@
+{
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "PROJECT.md",
+    "README.md",
+    "REFERENCES.md",
+    "SKILL.md",
+    "SPECIFICATION.md",
+    "coding/coding.md",
+    "coding/testing.md",
+    "context/context.md",
+    "context/deterministic-split.md",
+    "context/examples.md",
+    "context/fractal-summaries.md",
+    "context/long-horizon.md",
+    "context/tool-design.md",
+    "context/working-memory.md",
+    "contracts/boundary-maps.md",
+    "core/glossary.md",
+    "core/project.md",
+    "core/ralph.md",
+    "core/versioning.md",
+    "deployments/README.md",
+    "deployments/agentuity/README.md",
+    "deployments/agentuity/via-cli.md",
+    "deployments/agentuity/via-cloud.md",
+    "deployments/agentuity/via-github-actions.md",
+    "deployments/agentuity/via-gravity-network.md",
+    "deployments/agentuity/via-vpc.md",
+    "deployments/aws/README.md",
+    "deployments/aws/via-app-runner.md",
+    "deployments/aws/via-ecs-fargate.md",
+    "deployments/aws/via-elastic-beanstalk.md",
+    "deployments/aws/via-lambda.md",
+    "deployments/azure/README.md",
+    "deployments/azure/via-aks.md",
+    "deployments/azure/via-app-service.md",
+    "deployments/azure/via-container-apps.md",
+    "deployments/azure/via-functions.md",
+    "deployments/cloud-gov/README.md",
+    "deployments/cloud-gov/agents/compliance-docs.md",
+    "deployments/cloud-gov/agents.md",
+    "deployments/cloud-gov/cicd.md",
+    "deployments/cloud-gov/deployment.md",
+    "deployments/cloud-gov/logging.md",
+    "deployments/cloud-gov/manifest.md",
+    "deployments/cloud-gov/overview.md",
+    "deployments/cloud-gov/security.md",
+    "deployments/cloud-gov/services.md",
+    "deployments/cloud-gov/upstream/README.md",
+    "deployments/cloudflare/README.md",
+    "deployments/cloudflare/via-dashboard.md",
+    "deployments/cloudflare/via-git.md",
+    "deployments/cloudflare/via-github-actions.md",
+    "deployments/cloudflare/via-terraform.md",
+    "deployments/cloudflare/via-wrangler.md",
+    "deployments/fly-io/README.md",
+    "deployments/fly-io/via-dockerfile.md",
+    "deployments/fly-io/via-flyctl.md",
+    "deployments/fly-io/via-github-actions.md",
+    "deployments/fly-io/via-multi-region.md",
+    "deployments/google/README.md",
+    "deployments/google/via-app-engine.md",
+    "deployments/google/via-cloud-functions.md",
+    "deployments/google/via-cloud-run.md",
+    "deployments/google/via-gke.md",
+    "deployments/netlify/README.md",
+    "deployments/netlify/via-cli.md",
+    "deployments/netlify/via-functions.md",
+    "deployments/netlify/via-git.md",
+    "deployments/vercel/README.md",
+    "deployments/vercel/via-api.md",
+    "deployments/vercel/via-cli.md",
+    "deployments/vercel/via-git.md",
+    "docs/ai-coding-trust-paradox.md",
+    "docs/claude-code-integration.md",
+    "interfaces/cli.md",
+    "interfaces/rest.md",
+    "interfaces/tui.md",
+    "interfaces/web.md",
+    "languages/6502-DASM.md",
+    "languages/c#.md",
+    "languages/c.md",
+    "languages/commands.md",
+    "languages/cpp.md",
+    "languages/dart.md",
+    "languages/delphi.md",
+    "languages/elixir.md",
+    "languages/go.md",
+    "languages/java.md",
+    "languages/javascript.md",
+    "languages/julia.md",
+    "languages/kotlin.md",
+    "languages/markdown.md",
+    "languages/mermaid.md",
+    "languages/python.md",
+    "languages/r.md",
+    "languages/rust.md",
+    "languages/sql.md",
+    "languages/swift.md",
+    "languages/typescript.md",
+    "languages/vhdl.md",
+    "languages/visual-basic.md",
+    "languages/zig.md",
+    "main.md",
+    "meta/SOUL.md",
+    "meta/code-field.md",
+    "meta/ideas.md",
+    "meta/lessons.md",
+    "meta/morals.md",
+    "meta/suggestions.md",
+    "old/project.md",
+    "old/user.md",
+    "platforms/2600.md",
+    "resilience/context-pruning.md",
+    "resilience/continue-here.md",
+    "scm/changelog.md",
+    "scm/git.md",
+    "scm/github.md",
+    "strategies/README.md",
+    "strategies/brownfield.md",
+    "strategies/default-yolo-harder.md",
+    "strategies/default.md",
+    "strategies/discuss.md",
+    "strategies/research.md",
+    "strategies/speckit.md",
+    "swarm/swarm.md",
+    "templates/make-spec-example.md",
+    "templates/make-spec.md",
+    "templates/specification.md",
+    "todo.md",
+    "tools/RWLDL.md",
+    "tools/taskfile.md",
+    "tools/telemetry.md",
+    "vbrief/vbrief.md",
+    "verification/integration.md",
+    "verification/plan-checking.md",
+    "verification/uat.md",
+    "verification/verification.md"
+  ],
+  "headers": {
+    "CHANGELOG.md": [
+      "# Changelog",
+      "## [0.5.2] - 2026-03-09",
+      "## [0.5.1] - 2026-03-08",
+      "## [0.5.0] - 2026-02-23",
+      "## [0.4.3] - 2026-02-04",
+      "## [0.4.2] - 2026-01-31",
+      "## [0.4.1] - 2026-01-31",
+      "## [0.4.0] - 2026-01-31",
+      "## [0.3.7] - 2026-01-29",
+      "## [0.3.6] - 2026-01-29",
+      "## [0.3.5] - 2026-01-29",
+      "## [0.3.4] - 2026-01-29",
+      "## [0.3.3] - 2026-01-29",
+      "## [0.3.2] - 2026-01-29",
+      "## [0.3.1] - 2026-01-29",
+      "## [0.3.0] - 2026-01-29",
+      "## [0.2.5] - 2026-01-23",
+      "## [0.2.4] - 2026-01-22",
+      "## [0.2.3] - 2026-01-22",
+      "## [0.2.2] - 2026-01-21",
+      "## [0.2.1] - 2026-01-18",
+      "## [0.2.0] - 2026-01-18",
+      "## [0.1.0] - Initial Release",
+      "## Migration Guide: 0.1.0 → 0.2.0"
+    ],
+    "LICENSE.md": [
+      "# MIT License"
+    ],
+    "PROJECT.md": [
+      "# Project Guidelines",
+      "## Project Configuration",
+      "## Strategy",
+      "## Workflow",
+      "## Secrets",
+      "# Add your secrets to secrets/ directory",
+      "# Use .example files as templates",
+      "## Standards",
+      "## Project-Specific Rules"
+    ],
+    "README.md": [
+      "# Deft",
+      "## TL;DR",
+      "## 🎸 From Vibe to Virtuoso",
+      "## 🎯 What is Deft?",
+      "## 📝 Notation Legend",
+      "## 📚 The Layers",
+      "## 🚀 Getting Started",
+      "# OR",
+      "## 💡 Key Principles",
+      "## 📖 Example Workflows",
+      "## 📝 Contributing to Deft",
+      "## 2026-01-15: Testify suite setup",
+      "## 2026-01-20: CLI flag defaults",
+      "## auth-service",
+      "## api-gateway  ",
+      "## 🎓 Philosophy"
+    ],
+    "REFERENCES.md": [
+      "# Reference Guide - When to Load Which Files",
+      "## 🎯 Always Start Here",
+      "## 📋 Task-Based Loading",
+      "## 🔄 Reference Chains",
+      "## ⚠️ Don't Load Unless Needed",
+      "## 🎯 Common Scenarios",
+      "## 💡 Tips for Agents"
+    ],
+    "SKILL.md": [
+      "# Deft Framework",
+      "## When This Skill Activates",
+      "## Core Principle: Rule Precedence",
+      "## File Reading Strategy (Lazy Loading)",
+      "## Task-Centric Workflow",
+      "## Development Methodology",
+      "## Quality Standards",
+      "## Language-Specific Standards",
+      "## New Project Setup",
+      "## Self-Improvement",
+      "## Platform Integration",
+      "## Quick Reference",
+      "## Remember"
+    ],
+    "SPECIFICATION.md": [
+      "# Deft Directive — Testbed Phase 1 SPECIFICATION",
+      "## Overview",
+      "## Architecture",
+      "## Implementation Plan",
+      "## Dependency Map",
+      "## Acceptance Criteria (Definition of Done)",
+      "## Workflow Rules"
+    ],
+    "coding/coding.md": [
+      "# Coding Guidelines",
+      "## Code Organization",
+      "## Code Search",
+      "## Version Control",
+      "## Code Design",
+      "## Quality Standards",
+      "## Build Automation",
+      "## Change Management",
+      "## Language-Specific Guidelines",
+      "## Development Workflow",
+      "## Project Context",
+      "## Anti-Patterns"
+    ],
+    "coding/testing.md": [
+      "# Testing Standards",
+      "## Universal Requirements",
+      "## Test-First Development",
+      "## Coverage",
+      "## Test Types",
+      "## Language-Specific Details",
+      "## Test Organization",
+      "## Best Practices",
+      "## Anti-patterns",
+      "## CI/CD Integration"
+    ],
+    "context/context.md": [
+      "# Context Engineering",
+      "## Core Principle",
+      "## Strategy 1: Write",
+      "## Strategy 2: Select",
+      "## Strategy 3: Compress",
+      "## Strategy 4: Isolate"
+    ],
+    "context/deterministic-split.md": [
+      "# LLM / Deterministic Split",
+      "## Core Principle",
+      "## What Must Be Deterministic",
+      "## What the LLM Handles",
+      "## Decision Test",
+      "## Practical Application in Deft",
+      "## Anti-Patterns"
+    ],
+    "context/examples.md": [
+      "# Few-Shot & Behavioral Examples",
+      "## Core Insight",
+      "## Structuring Examples for Maximum Signal",
+      "## What to Avoid"
+    ],
+    "context/fractal-summaries.md": [
+      "# Fractal Summaries",
+      "## Core Principle",
+      "## Summary Hierarchy",
+      "## The Iron Rule",
+      "## Token Budget",
+      "## Anti-Patterns"
+    ],
+    "context/long-horizon.md": [
+      "# Long-Horizon & Multi-Session Tasks",
+      "## Checkpoint / Resume",
+      "## Task Dependencies (DAG Edges)",
+      "## Context Summarization Between Phases",
+      "## Progress Tracking"
+    ],
+    "context/tool-design.md": [
+      "# Tool Design for AI Consumption",
+      "## Minimal, Non-Overlapping Tool Sets",
+      "## Token-Efficient Outputs",
+      "## Clear Descriptions",
+      "## Error Messages"
+    ],
+    "context/working-memory.md": [
+      "# Working Memory & Scratchpads",
+      "## When to Create a Scratchpad",
+      "## Recommended Format: vBRIEF",
+      "## Cleanup",
+      "## vBRIEF Plan and Spec Files Are NOT Scratch"
+    ],
+    "contracts/boundary-maps.md": [
+      "# Boundary Maps",
+      "## Core Principle",
+      "## Boundary Map Format",
+      "## Rules",
+      "## Verification at Boundaries",
+      "## vBRIEF Integration",
+      "## Anti-Patterns"
+    ],
+    "core/glossary.md": [
+      "# Glossary",
+      "## Deft Work Decomposition Hierarchy",
+      "## Terms Introduced by Deft (with GSD lineage)",
+      "## GSD → Deft Term Mapping"
+    ],
+    "core/project.md": [
+      "# Iglesia Project Guidelines",
+      "## Project Configuration",
+      "## Workflow",
+      "## Secrets",
+      "# Add your secrets to secrets/ directory",
+      "# Use .example files as templates",
+      "## Standards",
+      "## Project-Specific Rules"
+    ],
+    "core/ralph.md": [
+      "# The Ralph Wiggum Loop",
+      "## 🎭 What is the Ralph Wiggum Loop?",
+      "## 🔄 The Loop Process",
+      "## 🎯 Key Principles",
+      "## 📋 Assessment Checklist",
+      "## 🛠️ Implementation in Warp (TBD)",
+      "## Ralph Loop",
+      "## 🎬 Example Session",
+      "## 🚧 Future Work",
+      "## 📚 References"
+    ],
+    "core/versioning.md": [
+      "# Semantic Versioning Standards",
+      "## Summary",
+      "## Version Format",
+      "## Core Rules",
+      "## Precedence Rules",
+      "## Common Pre-release Labels",
+      "## Examples",
+      "## Integration with Git & GitHub",
+      "# Tag a release (! use v prefix)",
+      "# Pre-release",
+      "# Create release with semantic version",
+      "# Pre-release",
+      "## Decision Tree",
+      "## FAQ",
+      "## Compliance"
+    ],
+    "deployments/README.md": [
+      "# Deployments Layer",
+      "## Purpose",
+      "## Module Structure"
+    ],
+    "deployments/agentuity/README.md": [
+      "# Agentuity Deployment Module",
+      "## Status",
+      "## Overview",
+      "## Deployment Methods",
+      "## Supported Frameworks",
+      "## Deployment Approaches",
+      "# Install Agentuity CLI",
+      "# Create new project",
+      "# Start local development",
+      "# Deploy to cloud",
+      "## Quick Decision Guide",
+      "## Key Features",
+      "## Platform Comparison",
+      "## References"
+    ],
+    "deployments/agentuity/via-cli.md": [
+      "# Deploy via Agentuity CLI",
+      "## Prerequisites",
+      "## Installation",
+      "# Install via install script (recommended)",
+      "# Or via Homebrew (macOS)",
+      "# Run from WSL terminal",
+      "## Quick Start",
+      "# Interactive creation with templates",
+      "# You'll be prompted to choose:",
+      "# - Project name",
+      "# - Runtime (TypeScript, Python, Bun)",
+      "# - Template (basic, chat, research, etc.)",
+      "# Your agent will be available at http://localhost:3500",
+      "# Hot reload enabled - changes apply instantly",
+      "# Deploy to Agentuity Cloud",
+      "# Or specify target",
+      "## Project Structure",
+      "## Core CLI Commands",
+      "# Create new agent in existing project",
+      "# List all agents",
+      "# Delete an agent",
+      "# Start dev server",
+      "# Run with specific port",
+      "# Enable debug logging",
+      "# Deploy to production",
+      "# Deploy with dry-run (validate only)",
+      "# Deploy specific directory",
+      "# Deploy with explanation",
+      "# List environment variables",
+      "# Set environment variable",
+      "# Delete environment variable",
+      "# Login to Agentuity Cloud",
+      "# Logout",
+      "# Check auth status",
+      "# Create API key",
+      "# List API keys",
+      "# Revoke API key",
+      "## Agent Configuration",
+      "## Advanced Features",
+      "# No account required to start building",
+      "# Deploy when ready",
+      "# Get agent info as JSON",
+      "# Deploy with JSON output",
+      "# Discover available schemas",
+      "# Validate agent schemas",
+      "## Deployment Options",
+      "# Deploy to Agentuity managed infrastructure",
+      "# Features:",
+      "# - Global edge network",
+      "# - Sub-100ms cold starts",
+      "# - Automatic scaling",
+      "# - Built-in SSL/DNS",
+      "# Configure custom domain",
+      "# SSL certificates managed automatically",
+      "# List deployments",
+      "# Rollback to previous version",
+      "## Monitoring and Debugging",
+      "# Stream live logs",
+      "# Filter by agent",
+      "# View last 100 lines",
+      "# Get agent details",
+      "# View agent configuration",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Add to PATH (macOS/Linux)",
+      "# Reload shell",
+      "# Check auth status",
+      "# Validate configuration",
+      "# Check logs",
+      "# Use different port",
+      "## Upgrading the CLI",
+      "# Upgrade to latest version",
+      "# Or reinstall",
+      "## Next Steps",
+      "## References"
+    ],
+    "deployments/agentuity/via-cloud.md": [
+      "# Deploy via Agentuity Managed Cloud",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Deploy",
+      "# Authenticate with Agentuity Cloud",
+      "# This opens browser for OAuth",
+      "# Or use API key: agentuity auth login --api-key YOUR_KEY",
+      "# From your project directory",
+      "# That's it! Your agent is now live.",
+      "## Features",
+      "# SSL certificates provisioned automatically",
+      "# Custom domains supported:",
+      "# DNS automatically configured",
+      "## Built-In Services",
+      "## Monitoring & Observability",
+      "# View traces",
+      "# Export to your observability platform",
+      "# Supports: Datadog, New Relic, Honeycomb, etc.",
+      "# Stream live logs",
+      "# Filter by severity",
+      "# Search logs",
+      "## Cost Management",
+      "# View current month costs",
+      "# Cost per agent",
+      "# Set budget alerts",
+      "## Deployment Configuration",
+      "# Set via CLI",
+      "# Or via agentuity.yaml",
+      "# agentuity.yaml",
+      "# Deploy to specific regions",
+      "## Advanced Features",
+      "# Deploy preview from branch",
+      "# Automatic preview URL",
+      "# https://pr-123-your-agent.agentuity.run",
+      "# Deploy with traffic splitting",
+      "# 10% traffic to new version",
+      "# Automatic rollback if errors spike",
+      "## GitHub Integration",
+      "# Connect GitHub repository",
+      "# Auto-deploy on push to main",
+      "# Preview deployments for PRs",
+      "## Rollbacks & Version Management",
+      "# List deployments",
+      "# Rollback to previous",
+      "# Rollback to specific version",
+      "# Instant rollback (< 1 second)",
+      "## Security",
+      "# Store secrets securely",
+      "# Reference in code",
+      "# Automatic encryption at rest",
+      "# Rotation without downtime",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Check deployment status",
+      "# View deployment logs",
+      "# Validate before deploy",
+      "# Check agent health",
+      "# Restart agent",
+      "# Scale up manually",
+      "# Analyze usage",
+      "# Optimize:",
+      "# - Reduce min_instances to 0",
+      "# - Add caching",
+      "# - Implement rate limiting",
+      "# - Use cheaper AI models",
+      "## Migration from Other Platforms",
+      "## Next Steps",
+      "## References"
+    ],
+    "deployments/agentuity/via-github-actions.md": [
+      "# Deploy via GitHub Actions",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Setup",
+      "# Generate deployment API key",
+      "# Copy the key for GitHub secrets",
+      "## Workflow Examples",
+      "## Agentuity Deploy Action",
+      "## Advanced Workflows",
+      "## Security Best Practices",
+      "## Environment Configuration",
+      "## Monitoring & Rollback",
+      "## Troubleshooting",
+      "## Best Practices",
+      "## Complete Example",
+      "## References"
+    ],
+    "deployments/agentuity/via-gravity-network.md": [
+      "# Deploy via Gravity Network",
+      "## Overview",
+      "## Key Concepts",
+      "## Deployment Targets",
+      "# agentuity.yaml",
+      "# Deploy to all targets",
+      "# Verify deployment",
+      "# agentuity.yaml",
+      "# Deploy to edge network",
+      "# Global edge deployment with < 50ms latency to 95% of users",
+      "# agentuity.yaml",
+      "# agentuity.yaml",
+      "## Configuration",
+      "# Configure multiple cloud providers",
+      "# Deploy across all configured clouds",
+      "# agentuity.yaml",
+      "## Deployment Strategies",
+      "## Cross-Environment Features",
+      "## Data Residency & Compliance",
+      "## Edge Computing Use Cases",
+      "# Deploy agents to edge locations near IoT devices",
+      "# Edge agents with cloud backup",
+      "## Monitoring & Operations",
+      "# View all deployments",
+      "# Output:",
+      "# ┌─────────────┬────────────────┬──────────┬──────────┐",
+      "# │ Environment │ Agents Running │ Requests │ Latency  │",
+      "# ├─────────────┼────────────────┼──────────┼──────────┤",
+      "# │ AWS US-East │ 5              │ 1.2M/day │ 45ms p50 │",
+      "# │ Azure EU    │ 3              │ 800K/day │ 38ms p50 │",
+      "# │ GCP Asia    │ 4              │ 950K/day │ 52ms p50 │",
+      "# │ On-Prem DC  │ 2              │ 150K/day │ 12ms p50 │",
+      "# └─────────────┴────────────────┴──────────┴──────────┘",
+      "# Aggregate metrics across all environments",
+      "# Compare environments",
+      "## Disaster Recovery",
+      "# Backup to multiple clouds simultaneously",
+      "## Cost Optimization",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Test connectivity between environments",
+      "# Check Gravity mesh status",
+      "# View routing table",
+      "# Measure latency between all environments",
+      "# Optimize routing",
+      "# Check synchronization status",
+      "# Force sync",
+      "# View sync conflicts",
+      "## References"
+    ],
+    "deployments/agentuity/via-vpc.md": [
+      "# Deploy via Private VPC / On-Premises",
+      "## Overview",
+      "## Use Cases",
+      "## Prerequisites",
+      "## Architecture",
+      "## Deployment Methods",
+      "# agentuity-values.yaml",
+      "# Deployment mode",
+      "# Cluster configuration",
+      "# Agent runtime",
+      "# Storage configuration",
+      "# Database",
+      "# Networking",
+      "# Security",
+      "# Monitoring",
+      "# Agentuity Console connection (optional)",
+      "# Create namespace",
+      "# Install with Helm",
+      "# Check installation",
+      "# main.tf",
+      "# docker-compose.yml",
+      "## Configuration",
+      "# Create VPC peering connection",
+      "# Update route tables",
+      "# VPC Endpoint Service",
+      "# Configure site-to-site VPN",
+      "# Connect on-prem network to Agentuity cluster",
+      "# Ensure proper routing for agent traffic",
+      "# network-policy.yaml",
+      "# Install Istio for advanced traffic management",
+      "# Enable for Agentuity namespace",
+      "# pv.yaml",
+      "## Agent Deployment",
+      "# Configure CLI for VPC deployment",
+      "# Deploy agent",
+      "# Agent deploys to your VPC cluster",
+      "# Configure multiple environments",
+      "# Switch contexts",
+      "# Deploy",
+      "## Hybrid Deployment",
+      "# agentuity.yaml",
+      "# Control plane in Agentuity Cloud",
+      "# Agents run in your VPC",
+      "# Secure tunnel for communication",
+      "## Monitoring & Operations",
+      "# Enable observability stack",
+      "# alerts.yaml",
+      "# Backup agent state",
+      "# Schedule automatic backups",
+      "## Compliance & Security",
+      "# Ensure data stays in specific region",
+      "# Enable encryption at rest",
+      "# Enable comprehensive audit logs",
+      "## Troubleshooting",
+      "# Check cluster connectivity",
+      "# Verify Agentuity pods",
+      "# Check logs",
+      "# Test network connectivity",
+      "# Check resource usage",
+      "# Scale up",
+      "# Check database performance",
+      "## Best Practices",
+      "## Next Steps",
+      "## References"
+    ],
+    "deployments/aws/README.md": [
+      "# AWS Deployment Module",
+      "## Status",
+      "## Overview",
+      "## Deployment Methods",
+      "## Quick Decision Guide",
+      "## References"
+    ],
+    "deployments/aws/via-app-runner.md": [
+      "# Deploy via AWS App Runner",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start from Source Code",
+      "# Via AWS Console:",
+      "# 1. Go to App Runner console",
+      "# 2. Click \"Create service\"",
+      "# 3. Choose \"Source code repository\"",
+      "# 4. Connect to GitHub",
+      "# 5. Select repository and branch",
+      "# apprunner.yaml",
+      "## Quick Start from Container Image",
+      "# Authenticate to ECR",
+      "# Create repository",
+      "# Build and tag image",
+      "# Push image",
+      "# Create service from ECR image",
+      "## Configuration File (apprunner.yaml)",
+      "## Environment Variables & Secrets",
+      "# Update service with environment variables",
+      "# apprunner.yaml",
+      "## Custom Domain & HTTPS",
+      "# Associate custom domain",
+      "# Get DNS validation records",
+      "# Add CNAME records to your DNS provider",
+      "# App Runner provides validation records",
+      "## Auto Scaling",
+      "# Set auto scaling configuration",
+      "# Apply to service",
+      "## Instance Configuration",
+      "# Configure instance size",
+      "## VPC Connector (Private Resources)",
+      "# Create VPC connector",
+      "# Associate with service",
+      "# apprunner.yaml with VPC access",
+      "## Health Checks",
+      "## CI/CD Integration",
+      "# .github/workflows/deploy.yml",
+      "# Enable automatic deployments",
+      "## Monitoring & Logging",
+      "# View application logs",
+      "# View service logs",
+      "# apprunner.yaml with X-Ray",
+      "## Database Integration",
+      "# Create VPC connector for RDS access",
+      "# Store credentials in Secrets Manager",
+      "# apprunner.yaml",
+      "# apprunner.yaml",
+      "# Grant IAM permissions via instance role",
+      "## Best Practices",
+      "## Cost Optimization",
+      "# Set minimum instances to 1 (or 0 for very low traffic)",
+      "# Use smallest instance size that meets requirements",
+      "# Set MaxConcurrency high to maximize instance utilization",
+      "# Use provisioned instances for predictable workloads",
+      "# Use autoscaling for variable traffic",
+      "## Troubleshooting",
+      "# Check service status",
+      "# View logs",
+      "# Common issues:",
+      "# - Wrong port in configuration",
+      "# - Missing required environment variables",
+      "# - Application not listening on 0.0.0.0",
+      "# Verify health endpoint returns 200",
+      "# Check health check configuration",
+      "# Verify VPC connector configuration",
+      "# Check security group rules allow traffic",
+      "# Check network ACLs",
+      "# Verify subnets have route to NAT gateway",
+      "## Limitations",
+      "## Comparison with Other Services",
+      "## References"
+    ],
+    "deployments/aws/via-ecs-fargate.md": [
+      "# Deploy via ECS Fargate",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# Create repository",
+      "# Login to ECR",
+      "# Build and push",
+      "# Register task definition",
+      "## Task Definition Patterns",
+      "## Service Configuration",
+      "# Register scalable target",
+      "# CPU-based scaling",
+      "# Create Application Load Balancer",
+      "# Create target group",
+      "# Create listener",
+      "## Infrastructure as Code",
+      "# ecs-stack.yaml",
+      "# main.tf",
+      "## CI/CD Integration",
+      "# .github/workflows/deploy.yml",
+      "## Monitoring & Logging",
+      "# Enable Container Insights",
+      "## Best Practices",
+      "## Fargate Spot",
+      "## Troubleshooting",
+      "# Check service events",
+      "# Check task status",
+      "## Cost Optimization",
+      "# Use Fargate Spot (up to 70% savings)",
+      "# Right-size CPU/memory",
+      "# Use auto-scaling to minimize idle capacity",
+      "# Consider EC2 launch type for predictable, always-on workloads",
+      "## References"
+    ],
+    "deployments/aws/via-elastic-beanstalk.md": [
+      "# Deploy via Elastic Beanstalk",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# Via pip",
+      "# Verify installation",
+      "# Navigate to project directory",
+      "# Initialize Elastic Beanstalk",
+      "# Follow prompts:",
+      "# - Select region",
+      "# - Choose or create application",
+      "# - Select platform (Python, Node.js, etc.)",
+      "# - Set up CodeCommit (optional)",
+      "# - Set up SSH (optional)",
+      "# Create environment and deploy",
+      "# Or specify options",
+      "# Check status",
+      "# View logs",
+      "# Open in browser",
+      "# Deploy updates",
+      "## Platform-Specific Configurations",
+      "# .ebextensions/nodecommand.config",
+      "# requirements.txt",
+      "# .ebextensions/python.config",
+      "## Configuration with .ebextensions",
+      "# .ebextensions/env-vars.config",
+      "# .ebextensions/instances.config",
+      "# .ebextensions/alb.config",
+      "# .ebextensions/commands.config",
+      "# .ebextensions/files.config",
+      "## Deployment Strategies",
+      "# .ebextensions/rolling.config",
+      "# .ebextensions/immutable.config",
+      "# Create new environment (green)",
+      "# Test green environment",
+      "# Swap URLs (zero downtime)",
+      "# Terminate old environment",
+      "## Environment Management",
+      "# Create staging environment",
+      "# Create production environment",
+      "# Switch between environments",
+      "# Save current configuration",
+      "# Apply saved configuration to new environment",
+      "## Database Integration",
+      "# Create environment with RDS",
+      "# Access RDS credentials in application",
+      "# .ebextensions/database.config",
+      "## Auto-scaling",
+      "# .ebextensions/autoscaling.config",
+      "# .ebextensions/scheduled-scaling.config",
+      "## CI/CD Integration",
+      "# .github/workflows/deploy.yml",
+      "# buildspec.yml",
+      "## Monitoring",
+      "# .ebextensions/health.config",
+      "# .ebextensions/cloudwatch.config",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Recent logs",
+      "# Tail logs",
+      "# Download all logs",
+      "# Enable SSH in .ebextensions or console",
+      "# SSH to specific instance",
+      "# Check events",
+      "# View health",
+      "## Cost Optimization",
+      "# Use t3/t4g instances",
+      "# Enable auto-scaling to scale to zero during off-hours",
+      "# Use spot instances for dev/test",
+      "# Right-size based on CloudWatch metrics",
+      "## References"
+    ],
+    "deployments/aws/via-lambda.md": [
+      "# Deploy via AWS Lambda",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start with SAM",
+      "# macOS",
+      "# Or via pip",
+      "# Verify installation",
+      "# Create new SAM project",
+      "# Follow prompts:",
+      "# - Template: Hello World",
+      "# - Runtime: python3.11, nodejs18.x, etc.",
+      "# - Dependency manager: pip, npm, etc.",
+      "# Build",
+      "# Deploy (guided first time)",
+      "# Subsequent deploys",
+      "## SAM Template Example",
+      "# template.yaml",
+      "# src/app.py",
+      "## Advanced SAM Patterns",
+      "## Serverless Framework Alternative",
+      "# Create new project",
+      "# Deploy all",
+      "# Deploy single function",
+      "# Remove stack",
+      "## Event Sources",
+      "## Configuration Management",
+      "# template.yaml",
+      "# Store secrets",
+      "# Reference in template",
+      "# Store secret",
+      "# Reference in template",
+      "## Local Development",
+      "# Start local API",
+      "# Invoke function locally",
+      "# Generate sample event",
+      "# Install plugin",
+      "# Add to serverless.yml",
+      "# Run locally",
+      "## Testing",
+      "# tests/test_app.py",
+      "# Deploy to test environment",
+      "# Run tests against deployed API",
+      "# Clean up",
+      "## CI/CD Integration",
+      "# .github/workflows/deploy.yml",
+      "## Monitoring and Logging",
+      "# View logs",
+      "# Filter logs",
+      "# template.yaml",
+      "# In code (Python)",
+      "## Best Practices",
+      "## Cost Optimization",
+      "# Right-size memory (CPU scales with memory)",
+      "# Set appropriate timeout",
+      "# Use ARM architecture (Graviton2)",
+      "# Reserved concurrency for cost control",
+      "## Troubleshooting",
+      "# Use provisioned concurrency",
+      "# Increase timeout",
+      "# Increase memory",
+      "# Add IAM policies",
+      "## References"
+    ],
+    "deployments/azure/README.md": [
+      "# Azure Deployment Module",
+      "## Status",
+      "## Overview",
+      "## Deployment Methods",
+      "## Quick Decision Guide",
+      "## References"
+    ],
+    "deployments/azure/via-aks.md": [
+      "# Deploy via Azure Kubernetes Service (AKS)",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# Install kubectl",
+      "# Verify",
+      "# Create resource group",
+      "# Create AKS cluster",
+      "# Get credentials",
+      "# Create deployment",
+      "# Expose as service",
+      "# Check status",
+      "## Kubernetes Manifests",
+      "# deployment.yaml",
+      "# service.yaml",
+      "# ingress.yaml",
+      "## ACR Integration",
+      "# Create ACR",
+      "# Build and push image",
+      "# Attach ACR to AKS",
+      "## Auto-scaling",
+      "# hpa.yaml",
+      "# Enable cluster autoscaler",
+      "## Helm Deployment",
+      "# Add Helm repo",
+      "# Install chart",
+      "# Create chart",
+      "# Edit values.yaml, then install",
+      "## CI/CD with GitHub Actions",
+      "# .github/workflows/aks-deploy.yml",
+      "## Monitoring",
+      "# Pod logs",
+      "# All pods",
+      "## Secrets Management",
+      "# Enable Key Vault add-on",
+      "# Create Key Vault",
+      "# secretproviderclass.yaml",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Check cluster health",
+      "# Node issues",
+      "# Pod issues",
+      "## Cost Optimization",
+      "# Use Standard tier for production",
+      "# Enable cluster autoscaler",
+      "# Use spot node pools for dev/test",
+      "# Right-size node VMs",
+      "# Scale to zero during off-hours",
+      "## References"
+    ],
+    "deployments/azure/via-app-service.md": [
+      "# Deploy via Azure App Service",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# macOS",
+      "# Or via installer",
+      "# Verify",
+      "# Login",
+      "# Create resource group",
+      "# Deploy from local directory (auto-detects runtime)",
+      "# Or create and deploy separately",
+      "# Deploy code",
+      "## Runtime-Specific Deployments",
+      "# Create App Service",
+      "# Configure startup command",
+      "# Deploy via ZIP",
+      "# Create App Service",
+      "# Configure startup command",
+      "# Deploy",
+      "# Create App Service (Windows)",
+      "# Deploy",
+      "# Create App Service",
+      "# Deploy JAR",
+      "# Create App Service for containers",
+      "# Enable continuous deployment",
+      "## Configuration",
+      "# Set app settings (environment variables)",
+      "# Add connection string",
+      "# Add custom domain",
+      "# Bind SSL certificate",
+      "## Deployment Methods",
+      "# Enable local Git deployment",
+      "# Get Git URL",
+      "# Deploy via Git",
+      "# Configure GitHub deployment",
+      "# .github/workflows/azure-webapps-node.yml",
+      "# azure-pipelines.yml",
+      "## Deployment Slots",
+      "# Create deployment slot",
+      "# Deploy to staging",
+      "# Swap slots (blue-green deployment)",
+      "## Auto-scaling",
+      "# Change pricing tier",
+      "# Set instance count",
+      "# Configure auto-scale rules",
+      "# CPU-based scaling",
+      "## Monitoring & Logging",
+      "# Create Application Insights",
+      "# Link to App Service",
+      "# Stream logs",
+      "# Download logs",
+      "## Database Integration",
+      "# Create SQL Server and database",
+      "# Add connection string to app",
+      "# Create Cosmos DB account",
+      "# Get connection string",
+      "# Add to app settings",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Check logs",
+      "# Check configuration",
+      "# Check metrics",
+      "# Scale up if needed",
+      "## Cost Optimization",
+      "# Use Free/Shared tier for development",
+      "# Use Basic tier for small production apps",
+      "# Enable auto-scaling to scale down during low traffic",
+      "# Stop app when not in use (dev/test)",
+      "## References"
+    ],
+    "deployments/azure/via-container-apps.md": [
+      "# Deploy via Azure Container Apps",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# Install extension",
+      "# Verify",
+      "# Create Log Analytics workspace",
+      "# Get workspace ID and key",
+      "# Create Container Apps environment",
+      "# Deploy from container image",
+      "## Deployment from Different Sources",
+      "# Create ACR",
+      "# Build and push image",
+      "# Deploy with managed identity",
+      "# Store credentials in secret",
+      "## Configuration",
+      "# Set environment variables",
+      "# Create secrets",
+      "# Use secrets in environment variables",
+      "## Ingress Configuration",
+      "# Add custom domain",
+      "# Bind certificate",
+      "## Scaling",
+      "# HTTP-based scaling",
+      "# Azure Queue scaling",
+      "## Revisions and Traffic Splitting",
+      "# Update with new image (creates new revision)",
+      "# Split traffic between revisions",
+      "# Ensure only one revision is active",
+      "# Allow multiple active revisions",
+      "## Dapr Integration",
+      "# dapr-state-store.yaml",
+      "# Create Dapr component",
+      "## Jobs (Scheduled/Event-Driven)",
+      "## CI/CD Integration",
+      "# .github/workflows/azure-container-apps.yml",
+      "# azure-pipelines.yml",
+      "## Monitoring & Logging",
+      "# Stream logs",
+      "# Get logs from specific revision",
+      "# View metrics",
+      "# Enable Application Insights",
+      "## Networking",
+      "# Create VNet-integrated environment",
+      "# Access another container app internally",
+      "# Use format: http://myapp.internal.{environment-domain}",
+      "# Get internal FQDN",
+      "## Best Practices",
+      "## Comparison with Other Services",
+      "## Troubleshooting",
+      "# Check revision status",
+      "# View system logs",
+      "# Check replica count",
+      "# Review scale rules",
+      "## Cost Optimization",
+      "# Scale to zero for dev/test",
+      "# Right-size resources",
+      "# Use consumption plan (default)",
+      "# Monitor and optimize scale rules",
+      "## References"
+    ],
+    "deployments/azure/via-functions.md": [
+      "# Deploy via Azure Functions",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# macOS",
+      "# Or via npm",
+      "# Verify",
+      "# Create local project",
+      "# Create HTTP trigger function",
+      "# Start local runtime",
+      "# Test function",
+      "# Login",
+      "# Create resource group",
+      "# Create storage account (required)",
+      "# Create Function App",
+      "# Deploy",
+      "## Language-Specific Examples",
+      "# function_app.py",
+      "## Triggers and Bindings",
+      "# Runs every day at 2 AM",
+      "## Configuration",
+      "# Set environment variables",
+      "## Durable Functions",
+      "## Hosting Plans",
+      "# Create Premium plan",
+      "# Create function app on Premium plan",
+      "# Create App Service plan",
+      "# Create function app",
+      "## CI/CD Integration",
+      "# .github/workflows/azure-functions.yml",
+      "# azure-pipelines.yml",
+      "## Monitoring",
+      "# Enable Application Insights",
+      "# Link to Function App",
+      "# Stream logs",
+      "# Via Azure CLI",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Check function status",
+      "# View logs",
+      "# Check execution times in Application Insights",
+      "# Consider Premium plan for:",
+      "# - VNet integration",
+      "# - Unlimited execution duration",
+      "# - Pre-warmed instances",
+      "## Cost Optimization",
+      "# Consumption plan: Pay per execution",
+      "# - First 1M executions free",
+      "# - Optimize function duration",
+      "# - Use efficient triggers",
+      "# Premium plan: For predictable costs",
+      "# - Pre-warmed instances",
+      "# - No cold starts",
+      "## References"
+    ],
+    "deployments/cloud-gov/README.md": [
+      "# cloud.gov Deployment Module",
+      "## Status",
+      "## Source & Attribution",
+      "## Files",
+      "## Tasks",
+      "## Notes"
+    ],
+    "deployments/cloud-gov/agents/compliance-docs.md": [
+      "## Capabilities",
+      "## Control Reference Patterns",
+      "## Output Formats",
+      "## [Control ID] - [Control Name]",
+      "## Workflow",
+      "## Output Location",
+      "## Notes",
+      "# CF Troubleshoot Skill (Deft)",
+      "## When to Use",
+      "## Diagnostic Basics",
+      "## Common Patterns",
+      "## Log Search",
+      "## Escalation"
+    ],
+    "deployments/cloud-gov/agents.md": [
+      "# Cloud.gov Agent Instructions (Deft)",
+      "## Core Behaviors",
+      "## Destructive Commands (ALWAYS confirm)",
+      "## Modifying Commands (confirm in prod)",
+      "## Safe Commands (no confirmation)",
+      "## Security Guidance"
+    ],
+    "deployments/cloud-gov/cicd.md": [
+      "# Cloud.gov CI/CD Instructions (Deft)",
+      "## Core Rules",
+      "## Service Account",
+      "## GitHub Actions (skeleton)",
+      "## Best Practices",
+      "## References"
+    ],
+    "deployments/cloud-gov/deployment.md": [
+      "# Cloud.gov Deployment Instructions (Deft)",
+      "## Prerequisites",
+      "## Basic Workflow",
+      "## Required Files",
+      "## Deployment Commands",
+      "## Strategies",
+      "## Scaling",
+      "## Health Checks",
+      "## Buildpacks",
+      "## Troubleshooting",
+      "## References"
+    ],
+    "deployments/cloud-gov/logging.md": [
+      "# Cloud.gov Logging Instructions (Deft)",
+      "## Core Rules",
+      "## Viewing Logs",
+      "## Structured Log Fields (suggested)",
+      "## Log Drains",
+      "## References"
+    ],
+    "deployments/cloud-gov/manifest.md": [
+      "# Cloud.gov Manifest Instructions (Deft)",
+      "## Required",
+      "## Example Manifest",
+      "## Properties",
+      "## Variables and Environments",
+      "## References"
+    ],
+    "deployments/cloud-gov/overview.md": [
+      "# Cloud.gov Development Instructions (Deft)",
+      "## Platform Overview",
+      "## Key Concepts",
+      "## Required Behaviors",
+      "## Expected Files",
+      "## Security & Compliance",
+      "## References"
+    ],
+    "deployments/cloud-gov/security.md": [
+      "# Cloud.gov Security Instructions (Deft)",
+      "## Shared Responsibility",
+      "## Core Rules",
+      "## NIST Control References",
+      "## Egress Rules",
+      "## References"
+    ],
+    "deployments/cloud-gov/services.md": [
+      "# Cloud.gov Services Instructions (Deft)",
+      "## Core Rules",
+      "## Service Lifecycle",
+      "## VCAP_SERVICES (Python example)",
+      "## Relational Databases (RDS)",
+      "## S3 Storage",
+      "## Redis",
+      "## Service Keys",
+      "## References"
+    ],
+    "deployments/cloud-gov/upstream/README.md": [
+      "# Upstream Snapshot (cloud-gov-instructions)",
+      "## Current Pin",
+      "## Sync"
+    ],
+    "deployments/cloudflare/README.md": [
+      "# Cloudflare Deployment Module",
+      "## Status",
+      "## Deployment Methods",
+      "## Important Note",
+      "## Quick Decision Guide"
+    ],
+    "deployments/cloudflare/via-dashboard.md": [
+      "# Deploy to Cloudflare via Dashboard Direct Upload",
+      "## Overview",
+      "## Prerequisites",
+      "## Setup",
+      "## Standards",
+      "## 🔧 Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "deployments/cloudflare/via-git.md": [
+      "# Deploy to Cloudflare via Git Integration",
+      "## Overview",
+      "## Prerequisites",
+      "## Setup",
+      "## Standards",
+      "## 🔧 Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "deployments/cloudflare/via-github-actions.md": [
+      "# Deploy to Cloudflare via GitHub Actions",
+      "## Overview",
+      "## Prerequisites",
+      "## Secrets Setup",
+      "## Workflow Examples",
+      "## Standards",
+      "## 🔧 Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "deployments/cloudflare/via-terraform.md": [
+      "# Deploy to Cloudflare via Terraform",
+      "## Overview",
+      "## Prerequisites",
+      "## Authentication",
+      "# Set via environment variable (recommended)",
+      "# Or in provider block (less secure)",
+      "## Example: Pages Project with Git Integration",
+      "## Standards",
+      "## 🔧 Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "deployments/cloudflare/via-wrangler.md": [
+      "# Deploy to Cloudflare via Wrangler CLI",
+      "## Overview",
+      "## Prerequisites",
+      "## Installation",
+      "# Project dev dependency (recommended)",
+      "# Or globally",
+      "## Authentication",
+      "# Interactive (opens browser)",
+      "# Non-interactive (CI/CD) — use API token",
+      "## Deploy Workflows",
+      "# Build your project first",
+      "# Deploy to Pages",
+      "# Deploy to a specific branch (preview)",
+      "# Scaffold a new Worker (uses C3 / create-cloudflare)",
+      "# Local development",
+      "# Deploy to production",
+      "## Standards",
+      "## 🔧 Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "deployments/fly-io/README.md": [
+      "# Fly.io Deployment Module",
+      "## Status",
+      "## Overview",
+      "## Deployment Methods",
+      "## Quick Decision Guide",
+      "## References"
+    ],
+    "deployments/fly-io/via-dockerfile.md": [
+      "# Deploy via Dockerfile",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# Basic Node.js example",
+      "# Copy package files",
+      "# Install dependencies",
+      "# Copy application code",
+      "# Expose port",
+      "# Start application",
+      "# Deploy using Dockerfile",
+      "# Or specify Dockerfile explicitly",
+      "## Dockerfile Best Practices",
+      "# Build stage",
+      "# Production stage",
+      "# Copy only necessary files from builder",
+      "# Run as non-root user",
+      "# Install dependencies first (cached layer)",
+      "# Copy application code last (changes frequently)",
+      "# Use distroless for security",
+      "## Language-Specific Examples",
+      "# Install dependencies",
+      "# Build TypeScript",
+      "# Production image",
+      "# Install system dependencies",
+      "# Install Python dependencies",
+      "# Copy application",
+      "# Collect static files",
+      "# Build stage",
+      "# Copy go mod files",
+      "# Copy source",
+      "# Build binary",
+      "# Production stage",
+      "# Install dependencies",
+      "# Install gems",
+      "# Copy application",
+      "# Precompile assets",
+      "# Install dependencies",
+      "# Install Composer",
+      "# Install PHP dependencies",
+      "# Copy application",
+      "# Set permissions",
+      "## Advanced Dockerfile Techniques",
+      "# Use build arg in build",
+      "# Add healthcheck",
+      "# Supports both amd64 and arm64",
+      "# Copy package files first",
+      "# This layer will be cached unless package.json changes",
+      "# Copy rest of application",
+      "## fly.toml Configuration",
+      "# fly.production.toml",
+      "# fly.staging.toml  ",
+      "## .dockerignore",
+      "# Version control",
+      "# Dependencies",
+      "# Build artifacts",
+      "# Environment files",
+      "# IDE",
+      "# OS",
+      "# Documentation",
+      "# Tests",
+      "# CI/CD",
+      "## Build Optimization",
+      "# Build on Fly's infrastructure (no local Docker needed)",
+      "# Faster, uses Fly's build cache",
+      "# Build locally with Docker",
+      "# Useful for testing Dockerfile changes",
+      "# Use build cache",
+      "# Clear cache and rebuild",
+      "## Deploying Pre-Built Images",
+      "# fly.toml",
+      "# Deploy",
+      "# Set registry credentials",
+      "# Deploy from private registry",
+      "## Debugging Docker Builds",
+      "# Build Docker image locally",
+      "# Test locally",
+      "# Then deploy to Fly",
+      "# Deploy with verbose output",
+      "# View build logs",
+      "# Access running container",
+      "# Check environment",
+      "# Inspect filesystem",
+      "## Common Issues & Solutions",
+      "# Before: 1GB+",
+      "# After: ~100MB",
+      "# Order matters! Put stable layers first",
+      "# ❌ Bad: Code changes rebuild dependencies",
+      "# ✅ Good: Dependencies cached",
+      "# Run as non-root user",
+      "# Change ownership",
+      "# Switch to node user",
+      "## Best Practices Summary",
+      "## References"
+    ],
+    "deployments/fly-io/via-flyctl.md": [
+      "# Deploy via flyctl CLI",
+      "## Overview",
+      "## Installation",
+      "# Using Homebrew",
+      "# Or using install script",
+      "# Install script",
+      "# Add to PATH",
+      "# Run in PowerShell",
+      "## Quick Start",
+      "# Create account and login",
+      "# Or login to existing account",
+      "# Verify authentication",
+      "# Navigate to your project directory",
+      "# Launch app (interactive setup)",
+      "# This will:",
+      "# - Detect your app type",
+      "# - Generate fly.toml configuration",
+      "# - Create a Dockerfile if needed",
+      "# - Deploy your app",
+      "# Deploy changes",
+      "# Deploy with specific Dockerfile",
+      "# Deploy with remote builder (no local Docker needed)",
+      "## Core Commands",
+      "# Create new app",
+      "# List your apps",
+      "# Show app status",
+      "# Open app in browser",
+      "# Destroy app",
+      "# Standard deployment",
+      "# Deploy from specific directory",
+      "# Deploy with build arguments",
+      "# Deploy specific image",
+      "# No cache build",
+      "# View current configuration",
+      "# Edit configuration",
+      "# Validate fly.toml",
+      "# Save current config",
+      "# Set secret",
+      "# Set multiple secrets",
+      "# Import secrets from file",
+      "# List secrets (values hidden)",
+      "# Remove secret",
+      "# Show current scale",
+      "# Scale machine count",
+      "# Scale to specific regions",
+      "# Scale machine size",
+      "# Scale memory",
+      "# Autoscaling",
+      "# List available regions",
+      "# Add region",
+      "# Remove region",
+      "# Set backup region",
+      "# Deploy to multiple regions",
+      "## fly.toml Configuration",
+      "# Application name",
+      "# Primary region",
+      "# Build configuration",
+      "# Environment variables",
+      "# HTTP service",
+      "# Autoscaling",
+      "# Processes (multiple process types)",
+      "# Metrics",
+      "# Volumes",
+      "# Private network",
+      "# Deploy configuration",
+      "# HTTP service with caching",
+      "## Advanced Features",
+      "# List machines",
+      "# Create machine",
+      "# Stop machine",
+      "# Start machine",
+      "# Clone machine",
+      "# Remove machine",
+      "# Create volume",
+      "# List volumes",
+      "# Extend volume",
+      "# Snapshot volume",
+      "# Restore from snapshot",
+      "# Create Postgres cluster",
+      "# Attach to app",
+      "# Connect to database",
+      "# List databases",
+      "# Create database",
+      "# Show connection string",
+      "# Create private network",
+      "# Add peer",
+      "# List peers",
+      "# Connect via WireGuard",
+      "# SSH into running instance",
+      "# SSH with specific command",
+      "# Open Rails console",
+      "# Run one-off command",
+      "## Monitoring & Debugging",
+      "# Stream logs",
+      "# Filter by region",
+      "# Show specific number of lines",
+      "# Search logs",
+      "# Open Grafana dashboard",
+      "# Show metrics",
+      "# VM status",
+      "# Check health",
+      "# View deployment history",
+      "# Rollback to previous version",
+      "# Show app info",
+      "# Check app health",
+      "# Test connectivity",
+      "## Deployment Strategies",
+      "# Deploy new version",
+      "# Or configure in fly.toml",
+      "# Deploy to limited machines first",
+      "# Manual canary",
+      "# Verify, then scale up",
+      "# fly.toml",
+      "## Best Practices",
+      "# Generate fly.toml",
+      "# Commit to git",
+      "# Never commit secrets to git",
+      "# Use fly secrets for production",
+      "# Deploy to multiple regions",
+      "# Verify distribution",
+      "# Create volume before first deploy",
+      "# Mount in fly.toml",
+      "## Troubleshooting",
+      "# Check build logs",
+      "# Deploy with verbose output",
+      "# Check app status",
+      "# View recent events",
+      "# Check if instances are running",
+      "# Restart all instances",
+      "# Scale up",
+      "# Test DNS",
+      "# Check certificates",
+      "# Verify routing",
+      "# Check current usage",
+      "# Scale memory",
+      "# Or upgrade VM",
+      "## Common Workflows",
+      "# Non-interactive deploy",
+      "# Run migration before deployment",
+      "# Or manually",
+      "# Use different fly.toml files",
+      "## References"
+    ],
+    "deployments/fly-io/via-github-actions.md": [
+      "# Deploy via GitHub Actions",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Setup",
+      "# Generate deploy token",
+      "# Copy the token for GitHub secrets",
+      "## Official Fly.io Actions",
+      "## Workflow Examples",
+      "## Advanced Configurations",
+      "## Deployment Strategies",
+      "# Configure in fly.toml",
+      "# Then deploy normally",
+      "# Deploy without waiting for health checks",
+      "## Monitoring & Notifications",
+      "## Best Practices",
+      "# Use GitHub environment secrets for sensitive data",
+      "# Never commit FLY_API_TOKEN to repository",
+      "## Troubleshooting",
+      "## Complete Example",
+      "## References"
+    ],
+    "deployments/fly-io/via-multi-region.md": [
+      "# Deploy via Multi-Region",
+      "## Overview",
+      "## Available Regions",
+      "## Quick Start",
+      "# List all Fly.io regions",
+      "# Output shows code, name, and gateway status",
+      "# Deploy initial app",
+      "# Add regions",
+      "# Scale to run in all regions",
+      "# List app regions",
+      "# Show all instances",
+      "# See which regions have instances",
+      "## Configuration",
+      "# fly.toml",
+      "# Set via CLI",
+      "# Add backup regions for failover",
+      "# fly.toml - Deploy to region groups",
+      "## Scaling Strategies",
+      "# Deploy equal instances to each region",
+      "# Results in:",
+      "# - 2 instances in IAD",
+      "# - 2 instances in LHR  ",
+      "# - 1 instance in NRT",
+      "# - 1 instance in SYD",
+      "# More instances in high-traffic regions",
+      "# fly.toml",
+      "# This applies per region",
+      "# With 3 regions: min 3, max 30 total instances",
+      "## Data and State Management",
+      "# fly.toml for stateless apps",
+      "# No volumes needed",
+      "# All regions serve traffic equally",
+      "# Create multi-region Postgres",
+      "# Attach to app",
+      "# Automatic read replicas in each region",
+      "# Create volumes in each region",
+      "# Fly will place instances with their volumes",
+      "# fly.toml with volumes",
+      "# One instance per volume",
+      "# Use Upstash Redis for multi-region caching",
+      "# Automatically replicates globally",
+      "## Routing and Load Balancing",
+      "# fly.toml",
+      "# Instances can communicate across regions",
+      "# via .internal DNS (e.g., my-app.internal)",
+      "# fly.toml",
+      "## High Availability Patterns",
+      "# All regions serve reads and writes",
+      "# Use conflict-free data structures (CRDTs)",
+      "# Or database with multi-master replication",
+      "# Deploy to all regions",
+      "# Primary region for writes",
+      "# Secondary regions for reads only",
+      "# Application routes writes to primary",
+      "# Reads can go to any region",
+      "# fly.toml",
+      "## Database Strategies",
+      "# Create Postgres with replicas",
+      "# Attach to application",
+      "# Automatic failover enabled",
+      "# fly.toml with LiteFS for distributed SQLite",
+      "# SQLite replicated across regions",
+      "# Use external database with read replicas",
+      "# App routes based on FLY_REGION environment variable",
+      "## Latency Optimization",
+      "# From your local machine",
+      "# Between regions (from running instance)",
+      "# fly.toml - Cache static assets",
+      "## Monitoring Multi-Region Deployments",
+      "# See all instances by region",
+      "# JSON output for scripting",
+      "# Open Grafana dashboard",
+      "# Filter by region in Grafana",
+      "# Filter logs by region",
+      "# View logs from all regions",
+      "## Disaster Recovery",
+      "# Fly automatically routes around failed instances",
+      "# No configuration needed",
+      "# View failover events",
+      "# Remove unhealthy region",
+      "# Traffic automatically routes to other regions",
+      "# Re-add when healthy",
+      "# Snapshot volumes in each region",
+      "# Restore in different region if needed",
+      "## Cost Optimization",
+      "# Deploy only to regions you need",
+      "# More regions = more cost",
+      "# Start with primary market",
+      "# Add as needed",
+      "# Run minimum instances",
+      "# Use autoscaling",
+      "## Best Practices",
+      "## Common Patterns",
+      "# fly.toml",
+      "# Override per region if needed via secrets",
+      "# fly secrets set CONFIG_IAD=value --region iad",
+      "## Troubleshooting",
+      "# Check instance health",
+      "# Restart unhealthy instances",
+      "# Check health checks",
+      "# Test from that region",
+      "# Check database connection",
+      "# Consider adding database replica in that region",
+      "# Check events",
+      "# View detailed status",
+      "# Try manual allocation",
+      "## References"
+    ],
+    "deployments/google/README.md": [
+      "# Google Cloud Deployment Module",
+      "## Status",
+      "## Overview",
+      "## Deployment Methods",
+      "## Quick Decision Guide",
+      "## References"
+    ],
+    "deployments/google/via-app-engine.md": [
+      "# Deploy via App Engine",
+      "## Overview",
+      "## Quick Start",
+      "# Deploy application",
+      "# View application",
+      "## app.yaml Configuration",
+      "## References"
+    ],
+    "deployments/google/via-cloud-functions.md": [
+      "# Deploy via Cloud Functions",
+      "## Quick Start",
+      "# Deploy HTTP function",
+      "# Deploy event-driven function",
+      "## References"
+    ],
+    "deployments/google/via-cloud-run.md": [
+      "# Deploy via Cloud Run",
+      "## Overview",
+      "## Prerequisites",
+      "## Quick Start",
+      "# macOS",
+      "# Initialize",
+      "# Authenticate",
+      "# Deploy directly from source (buildpacks)",
+      "# Follow prompts, Cloud Run builds and deploys automatically",
+      "# Build with Cloud Build",
+      "# Deploy",
+      "## Deploy from Dockerfile",
+      "# Submit build",
+      "# Deploy with options",
+      "## Configuration",
+      "# Set environment variables",
+      "# From file",
+      "# Create secret in Secret Manager",
+      "# Grant access to Cloud Run service account",
+      "# Use secret in Cloud Run",
+      "## Custom Domains",
+      "# Map custom domain",
+      "# Add domain mapping",
+      "# Update DNS records as instructed",
+      "## Traffic Splitting",
+      "# Deploy new revision",
+      "# Split traffic",
+      "## CI/CD Integration",
+      "# .github/workflows/cloud-run.yml",
+      "# cloudbuild.yaml",
+      "## VPC Access",
+      "# Create VPC connector",
+      "# Use connector",
+      "## Database Integration",
+      "# Connect to Cloud SQL",
+      "# Set environment variable",
+      "## Monitoring",
+      "# Stream logs",
+      "# View recent logs",
+      "## Best Practices",
+      "## Troubleshooting",
+      "# Check service status",
+      "# View revisions",
+      "# Check IAM permissions",
+      "## Cost Optimization",
+      "# Scale to zero when idle",
+      "# Right-size resources",
+      "# Use request timeout",
+      "# Monitor and optimize per-request costs",
+      "## References"
+    ],
+    "deployments/google/via-gke.md": [
+      "# Deploy via Google Kubernetes Engine (GKE)",
+      "## Quick Start",
+      "# Create cluster",
+      "# Get credentials",
+      "# Deploy application",
+      "## References"
+    ],
+    "deployments/netlify/README.md": [
+      "# Netlify Deployment Module",
+      "## Status",
+      "## Overview",
+      "## Deployment Methods",
+      "## Supported Frameworks",
+      "## Deployment Approaches",
+      "# Install Netlify CLI",
+      "# Link to existing site or create new",
+      "# Deploy draft for testing",
+      "# Deploy to production",
+      "## Quick Decision Guide",
+      "## Key Features",
+      "## References"
+    ],
+    "deployments/netlify/via-cli.md": [
+      "# Deploy via Netlify CLI",
+      "## Quick Start",
+      "# Install CLI",
+      "# Deploy",
+      "## References"
+    ],
+    "deployments/netlify/via-functions.md": [
+      "# Deploy Netlify Functions",
+      "## Quick Start",
+      "## References"
+    ],
+    "deployments/netlify/via-git.md": [
+      "# Deploy via Git Integration",
+      "## Quick Start",
+      "## Build Configuration",
+      "# netlify.toml",
+      "## References"
+    ],
+    "deployments/vercel/README.md": [
+      "# Vercel Deployment Module",
+      "## Status",
+      "## Overview",
+      "## Deployment Methods",
+      "## Supported Frameworks",
+      "## Deployment Approaches",
+      "# Install Vercel CLI",
+      "# Deploy to preview",
+      "# Deploy to production",
+      "## Quick Decision Guide",
+      "## Key Features",
+      "## References"
+    ],
+    "deployments/vercel/via-api.md": [
+      "# Deploy via Vercel API",
+      "## Quick Start",
+      "## References"
+    ],
+    "deployments/vercel/via-cli.md": [
+      "# Deploy via Vercel CLI",
+      "## Quick Start",
+      "# Install CLI",
+      "# Deploy to production",
+      "## References"
+    ],
+    "deployments/vercel/via-git.md": [
+      "# Deploy via Git Integration",
+      "## Quick Start",
+      "## Configuration",
+      "## References"
+    ],
+    "docs/ai-coding-trust-paradox.md": [
+      "# The AI Coding Trust Paradox: Why We Fear Tomorrow's Tools While Living With Yesterday's Risks",
+      "## The $50 Billion Blind Spot",
+      "## The Credit Card Precedent",
+      "## Risky Frontier Agents? Everything's Risky.",
+      "## Technology Evolves—Keep Up or Hang Back",
+      "## The Real Risk"
+    ],
+    "docs/claude-code-integration.md": [
+      "# Using Deft with AI Assistants (Claude Code & clawd.bot)",
+      "## AgentSkills Specification",
+      "## What is a Skill?",
+      "## Installation Options",
+      "# Create personal skills directory",
+      "# Copy SKILL.md to personal skills",
+      "# Optional: Symlink for easier updates",
+      "# In your project directory",
+      "# Copy or link SKILL.md",
+      "## How It Works",
+      "## What the Skill Teaches Claude",
+      "## Verification",
+      "# Check personal skills",
+      "# Check project skills (in project directory)",
+      "# In Claude Code, the skill will automatically load when relevant",
+      "## Usage Examples",
+      "## Customization",
+      "## Troubleshooting",
+      "## Best Practices",
+      "## Advanced: Skill Structure",
+      "# Deft Framework",
+      "## Rule Precedence",
+      "## File Reading Strategy",
+      "## Using with clawd.bot",
+      "# Install for all agents on this machine",
+      "# Or symlink for auto-updates",
+      "# Install for a specific agent workspace",
+      "# Install from the registry",
+      "# Update to latest",
+      "# macOS",
+      "# Linux",
+      "# From the skill directory",
+      "# Publish to ClawdHub",
+      "# Update version",
+      "## Further Reading",
+      "## Cross-Platform Benefits"
+    ],
+    "interfaces/cli.md": [
+      "# CLI Best Practices",
+      "## Framework",
+      "## Output",
+      "## Commands",
+      "## Architecture",
+      "## UX",
+      "## Authentication",
+      "## Output Handling",
+      "## Testing",
+      "## Common Patterns",
+      "## Documentation",
+      "## Anti-patterns"
+    ],
+    "interfaces/rest.md": [
+      "# REST API Design",
+      "## URIs",
+      "## HTTP Methods",
+      "## Status Codes",
+      "## Request/Response",
+      "## Statelessness",
+      "## Collections",
+      "## Versioning",
+      "## Caching",
+      "## Security",
+      "## Performance",
+      "## Documentation",
+      "## HATEOAS",
+      "## Testing",
+      "## Monitoring",
+      "## Anti-patterns",
+      "## Summary"
+    ],
+    "interfaces/tui.md": [
+      "# TUI Agent Guidelines",
+      "## Framework Selection",
+      "## Core Architecture",
+      "## Textual-Specific (Python)",
+      "## ink-Specific (TypeScript)",
+      "## Performance",
+      "## Testing",
+      "## Error Handling",
+      "# Textual",
+      "## Accessibility",
+      "## Commands & Tasks",
+      "## Best Practices",
+      "## Anti-Patterns",
+      "## Documentation",
+      "## References"
+    ],
+    "interfaces/web.md": [
+      "# UI Skills",
+      "## Stack",
+      "## Components",
+      "## Interaction",
+      "## Animation",
+      "## Typography",
+      "## Layout",
+      "## Performance",
+      "## Design",
+      "## Authentication",
+      "## Theming",
+      "## Testing"
+    ],
+    "languages/6502-DASM.md": [
+      "# 6502 + DASM Standards",
+      "## Scope",
+      "## Standards",
+      "## Patterns",
+      "## Compliance Checklist",
+      "## Sources"
+    ],
+    "languages/c#.md": [
+      "# C# Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Build Configuration",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/c.md": [
+      "# C Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Build Configuration",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/commands.md": [
+      "# Standard Task Commands",
+      "## Default Commands",
+      "## Naming Conventions"
+    ],
+    "languages/cpp.md": [
+      "# C++ Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Build Configuration",
+      "## GSL (Guidelines Support Library)",
+      "## Interface Design",
+      "## Compliance Checklist"
+    ],
+    "languages/dart.md": [
+      "# Dart Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/delphi.md": [
+      "# Delphi / Object Pascal Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/elixir.md": [
+      "# Elixir Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "# with pipeline for composed operations",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/go.md": [
+      "# Go Standards",
+      "## Standards",
+      "## Commands",
+      "## 🔧 Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/java.md": [
+      "# Java Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Build Configuration",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/javascript.md": [
+      "# JavaScript Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/julia.md": [
+      "# Julia Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/kotlin.md": [
+      "# Kotlin Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/markdown.md": [
+      "# Markdown Best Practices",
+      "## Standards",
+      "## Mermaid Diagrams",
+      "## Versioning & Maintenance",
+      "## README Standards",
+      "## ADR (Architecture Decision Records)",
+      "## Tooling",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/mermaid.md": [
+      "# Mermaid Diagram Standards",
+      "## Standards",
+      "## Color Palette",
+      "## Init Directive (Required)",
+      "## Diagram Examples"
+    ],
+    "languages/python.md": [
+      "# Python Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## pyproject.toml",
+      "## Compliance Checklist"
+    ],
+    "languages/r.md": [
+      "# R Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/rust.md": [
+      "# Rust Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/sql.md": [
+      "# SQL Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/swift.md": [
+      "# Swift Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Package.swift",
+      "## Linter/Formatter Config",
+      "## Compliance Checklist"
+    ],
+    "languages/typescript.md": [
+      "# TypeScript Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## tsconfig.json",
+      "## package.json",
+      "## vitest.config.ts",
+      "## .eslintrc.json",
+      "## Compliance Checklist"
+    ],
+    "languages/vhdl.md": [
+      "# VHDL Standards",
+      "## Standards",
+      "## Commands",
+      "## 🔧 Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/visual-basic.md": [
+      "# Visual Basic Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "languages/zig.md": [
+      "# Zig Standards",
+      "## Standards",
+      "## Commands",
+      "## Patterns",
+      "## Anti-Patterns",
+      "## Compliance Checklist"
+    ],
+    "main.md": [
+      "# Warp AI Guidelines",
+      "## Overview",
+      "## Framework Structure",
+      "## Agent Behavior",
+      "## vBRIEF Persistence",
+      "## Continuous Improvement",
+      "## Context Awareness"
+    ],
+    "meta/SOUL.md": [
+      "# Your soul",
+      "## Core Rules"
+    ],
+    "meta/code-field.md": [
+      "# Scenario",
+      "# Background",
+      "# Survival rules"
+    ],
+    "meta/ideas.md": [
+      "# Ideas"
+    ],
+    "meta/lessons.md": [
+      "# Lessons Learned",
+      "## Context Engineering (2026-03)"
+    ],
+    "meta/morals.md": [
+      "# Moral Guidelines",
+      "## Patterns",
+      "## Anti-Patterns"
+    ],
+    "meta/suggestions.md": [],
+    "old/project.md": [
+      "# reminderbot.ai Project Guidelines",
+      "## Project Configuration",
+      "## 📋 Workflow",
+      "## 🔐 Secrets",
+      "## Standards"
+    ],
+    "old/user.md": [
+      "# User Preferences",
+      "## Name",
+      "## Default Standards",
+      "## Custom Rules",
+      "## Workflow Preferences",
+      "## AI Behavior"
+    ],
+    "platforms/2600.md": [
+      "# Atari 2600 (VCS) Standards",
+      "## Hardware Reference",
+      "## Toolchain",
+      "## Standards",
+      "## Resources"
+    ],
+    "resilience/context-pruning.md": [
+      "# Context Pruning",
+      "## Core Principle",
+      "## Task Anchoring",
+      "## Zero Discovery Calls",
+      "## Token Budget",
+      "## Self-Monitoring",
+      "## Anti-Patterns"
+    ],
+    "resilience/continue-here.md": [
+      "# Continue-Here: Interruption Recovery",
+      "## Core Principle",
+      "## When to Write a Continue Checkpoint",
+      "## Continue Checkpoint Contents",
+      "## Resume Protocol",
+      "## Continue Checkpoint Lifecycle",
+      "## Anti-Patterns"
+    ],
+    "scm/changelog.md": [
+      "# Changelog Standards",
+      "## Scope",
+      "## Purpose",
+      "## Format",
+      "# Changelog",
+      "## [Unreleased]",
+      "## [1.0.0] - 2024-01-18",
+      "## Sections",
+      "## When to Update",
+      "## What to Include",
+      "## Version Format",
+      "## [MAJOR.MINOR.PATCH] - YYYY-MM-DD",
+      "## Entry Format",
+      "## Unreleased Section",
+      "## Breaking Changes",
+      "## [2.0.0] - 2024-02-15",
+      "## Links",
+      "## Examples",
+      "## [1.0.1] - 2024-01-20",
+      "## [1.1.0] - 2024-02-01",
+      "## [2.0.0] - 2024-03-01",
+      "## Integration with Release Process",
+      "# 1. Update CHANGELOG.md",
+      "# Move [Unreleased] items to [X.Y.Z] section",
+      "# 2. Commit changelog",
+      "# 3. Tag release",
+      "# 4. Push",
+      "# 5. Create GitHub release",
+      "## Compliance"
+    ],
+    "scm/git.md": [
+      "# Git Standards",
+      "## Standards",
+      "## Commit Types",
+      "## Workflow Best Practices",
+      "## .gitignore Patterns",
+      "# Dependencies",
+      "# Build outputs",
+      "# IDE",
+      "# Secrets (CRITICAL)",
+      "# Generated",
+      "# OS",
+      "## Safety Rules",
+      "## Changelog & Versioning",
+      "## Compliance"
+    ],
+    "scm/github.md": [
+      "# GitHub Standards",
+      "## Standards",
+      "## PR Workflow",
+      "## Description",
+      "## Type of Change",
+      "## Changes",
+      "## Testing",
+      "## Checklist",
+      "## Related Issues",
+      "## Issue Workflow",
+      "## Description",
+      "## Steps to Reproduce",
+      "## Expected Behavior",
+      "## Actual Behavior",
+      "## Environment",
+      "## Logs/Screenshots",
+      "## Additional Context",
+      "## GitHub Actions Best Practices",
+      "## Branch Protection",
+      "## UCCPR Workflow",
+      "# 1. Update Changelog",
+      "# Add new version section to CHANGELOG.md with date and changes",
+      "# 2. Update version in code",
+      "# Update VERSION constant/variable in main script/package file",
+      "# 3. Commit changes",
+      "# 4. Push changes",
+      "# 5. Create and push tag",
+      "# 6. Create GitHub release",
+      "# Or extract just this version from CHANGELOG:",
+      "## Compliance"
+    ],
+    "strategies/README.md": [
+      "# Strategies",
+      "## Available Strategies",
+      "## Selecting a Strategy",
+      "## Strategy",
+      "## Creating Custom Strategies"
+    ],
+    "strategies/brownfield.md": [
+      "# Brownfield Strategy",
+      "## When to Use",
+      "## Workflow",
+      "## Mapping Artifacts",
+      "## Mapping Rules",
+      "## How Artifacts Feed Downstream",
+      "## Invoking This Strategy"
+    ],
+    "strategies/default-yolo-harder.md": [
+      "# DEFaulT Strategy",
+      "## When to Use",
+      "## Workflow Overview",
+      "## Phase 1: Interview",
+      "## Phase 2: PRD Generation",
+      "# [Project Name] PRD",
+      "## Problem Statement",
+      "## Goals",
+      "## User Stories",
+      "## Requirements",
+      "## Success Metrics",
+      "## Open Questions",
+      "## Phase 3: SPECIFICATION Generation",
+      "# [Project Name] SPECIFICATION",
+      "## Overview",
+      "## Architecture",
+      "## Implementation Plan",
+      "## Testing Strategy",
+      "## Deployment",
+      "## Artifacts Summary",
+      "## Invoking This Strategy"
+    ],
+    "strategies/default.md": [
+      "# DEFaulT Strategy",
+      "## When to Use",
+      "## Workflow Overview",
+      "## Phase 1: Interview",
+      "## Phase 2: PRD Generation",
+      "# [Project Name] PRD",
+      "## Problem Statement",
+      "## Goals",
+      "## User Stories",
+      "## Requirements",
+      "## Success Metrics",
+      "## Open Questions",
+      "## Phase 3: SPECIFICATION Generation",
+      "# [Project Name] SPECIFICATION",
+      "## Overview",
+      "## Architecture",
+      "## Implementation Plan",
+      "## Testing Strategy",
+      "## Deployment",
+      "## Artifacts Summary",
+      "## Invoking This Strategy"
+    ],
+    "strategies/discuss.md": [
+      "# Discuss Strategy",
+      "## Core Principle",
+      "## When to Use",
+      "## The Feynman Approach",
+      "## Questioning Behaviors",
+      "## Domain-Sensitive Questions",
+      "## Output",
+      "## Decision Locking",
+      "## Anti-Patterns"
+    ],
+    "strategies/research.md": [
+      "# Research Strategy",
+      "## When to Use",
+      "## Output",
+      "## How Research Feeds Downstream",
+      "## Research Scope Rules",
+      "## Anti-Patterns"
+    ],
+    "strategies/speckit.md": [
+      "# SpecKit Strategy",
+      "## When to Use",
+      "## Workflow Overview",
+      "## Phase 1: Principles",
+      "## Phase 2: Specify (WHAT/WHY)",
+      "# Feature Specification: [Name]",
+      "## User Scenarios (mandatory)",
+      "## Requirements (mandatory)",
+      "## Success Criteria (mandatory)",
+      "## Phase 3: Plan (HOW)",
+      "# Implementation Plan: [Feature]",
+      "## Pre-Implementation Gates",
+      "## Architecture",
+      "## Implementation Phases",
+      "## Technology Decisions",
+      "## Phase 4: Tasks",
+      "## Phase 5: Implement",
+      "## Artifacts Summary",
+      "## Directory Structure",
+      "## Invoking This Strategy"
+    ],
+    "swarm/swarm.md": [
+      "# Swarm Coordination Guidelines",
+      "## Communication Protocols",
+      "## Task Structure",
+      "## Output Formatting",
+      "## Change Impact Analysis",
+      "## Handoff Patterns",
+      "## Model Best Practices",
+      "# Serialize to file",
+      "# Create modified copy",
+      "## Conflict Resolution",
+      "## Coordination Artifacts",
+      "## Testing in Swarm Context",
+      "## Git Workflow",
+      "## Anti-Patterns",
+      "## Example Task Workflow",
+      "# Verify T-038 is complete",
+      "# Create branch",
+      "# Make changes, commit frequently",
+      "## References"
+    ],
+    "templates/make-spec-example.md": [],
+    "templates/make-spec.md": [
+      "# Specification Generation",
+      "## Input Template",
+      "## Interview Process",
+      "## Output Generation",
+      "## Afterwards",
+      "# Project Name",
+      "## Overview",
+      "## Requirements",
+      "## Architecture",
+      "## Implementation Plan",
+      "## Testing Strategy",
+      "## Deployment",
+      "## Best Practices",
+      "## Anti-Patterns"
+    ],
+    "templates/specification.md": [],
+    "todo.md": [
+      "# Todo",
+      "## Phase 1 — Testbed (In Progress)",
+      "## Deferred from Phase 1 — Testbed Completions",
+      "## Priority Refactors (Before Phase 2)",
+      "## Phase 2 — Deft Directive v0.6.0 Upgrade",
+      "## Future Phases (Unscheduled)"
+    ],
+    "tools/RWLDL.md": [
+      "# Ralph Wiggum's Loop-de-Loop (RWLDL)",
+      "## Overview",
+      "## Loop-de-Loop Steps",
+      "## Progress Tracking"
+    ],
+    "tools/taskfile.md": [
+      "# Taskfile Guidelines",
+      "## Task-Centric Workflow",
+      "## Core Principles",
+      "## Naming Conventions",
+      "## Dependencies, Caching, Performance",
+      "## Robustness & Safety",
+      "## UX for Teams & CI",
+      "## Common Task Commands",
+      "## Example Taskfile Structure",
+      "## Best Practices",
+      "## Anti-Patterns",
+      "## References"
+    ],
+    "tools/telemetry.md": [
+      "# Telemetry Standards",
+      "## Mode-Specific Requirements",
+      "## Recommended Tools",
+      "## Logging Best Practices",
+      "# Good",
+      "# Bad",
+      "## Tracing Best Practices",
+      "## Metrics Best Practices",
+      "## Error Tracking",
+      "## Integration Patterns",
+      "## Anti-Patterns",
+      "## Mode Decision Matrix",
+      "## Testing Telemetry",
+      "## References"
+    ],
+    "vbrief/vbrief.md": [
+      "# vBRIEF Usage in Deft",
+      "## File Taxonomy",
+      "## specification.vbrief.json",
+      "## plan.vbrief.json",
+      "## continue.vbrief.json",
+      "## playbook-{name}.vbrief.json",
+      "## Specification Flow",
+      "## Tool Mappings",
+      "## Anti-Patterns"
+    ],
+    "verification/integration.md": [
+      "# Integration Checking",
+      "## Core Principle",
+      "## When to Check",
+      "## 4 Integration Checks",
+      "# Check if feature 1's export is used by feature 2",
+      "## Integration Report",
+      "## Anti-Patterns"
+    ],
+    "verification/plan-checking.md": [
+      "# Plan Checking",
+      "## Core Principle",
+      "## When to Check",
+      "## 4 Verification Dimensions",
+      "## Plan Check Output",
+      "## Anti-Patterns"
+    ],
+    "verification/uat.md": [
+      "# User Acceptance Testing (UAT)",
+      "## Core Principle",
+      "## When to Generate",
+      "## UAT Script Format",
+      "## UAT: [Feature Name]",
+      "## Guidelines",
+      "## Workflow",
+      "## vBRIEF Integration"
+    ],
+    "verification/verification.md": [
+      "# Agent Work Verification",
+      "## Core Principle",
+      "## Acceptance Criteria",
+      "## Stub Detection",
+      "## Verification Ladder (4 Tiers)",
+      "## vBRIEF Integration",
+      "## Anti-Patterns"
+    ]
+  },
+  "links": {
+    "CHANGELOG.md": [],
+    "LICENSE.md": [],
+    "PROJECT.md": [
+      {
+        "text": "../main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "../languages/python.md",
+        "path": "../languages/python.md"
+      },
+      {
+        "text": "Default",
+        "path": "../strategies/default.md"
+      },
+      {
+        "text": "../tools/telemetry.md",
+        "path": "../tools/telemetry.md"
+      }
+    ],
+    "README.md": [
+      {
+        "text": "REFERENCES.md",
+        "path": "./REFERENCES.md"
+      },
+      {
+        "text": "main.md",
+        "path": "./main.md"
+      },
+      {
+        "text": "MIT License",
+        "path": "./LICENSE.md"
+      }
+    ],
+    "REFERENCES.md": [
+      {
+        "text": "main.md",
+        "path": "./main.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "./core/glossary.md"
+      },
+      {
+        "text": "coding/coding.md",
+        "path": "./coding/coding.md"
+      },
+      {
+        "text": "languages/python.md",
+        "path": "./languages/python.md"
+      },
+      {
+        "text": "languages/go.md",
+        "path": "./languages/go.md"
+      },
+      {
+        "text": "languages/typescript.md",
+        "path": "./languages/typescript.md"
+      },
+      {
+        "text": "languages/cpp.md",
+        "path": "./languages/cpp.md"
+      },
+      {
+        "text": "core/project.md",
+        "path": "./core/project.md"
+      },
+      {
+        "text": "interfaces/cli.md",
+        "path": "./interfaces/cli.md"
+      },
+      {
+        "text": "interfaces/rest.md",
+        "path": "./interfaces/rest.md"
+      },
+      {
+        "text": "interfaces/tui.md",
+        "path": "./interfaces/tui.md"
+      },
+      {
+        "text": "interfaces/web.md",
+        "path": "./interfaces/web.md"
+      },
+      {
+        "text": "deployments/README.md",
+        "path": "./deployments/README.md"
+      },
+      {
+        "text": "scm/git.md",
+        "path": "./scm/git.md"
+      },
+      {
+        "text": "scm/github.md",
+        "path": "./scm/github.md"
+      },
+      {
+        "text": "tools/taskfile.md",
+        "path": "./tools/taskfile.md"
+      },
+      {
+        "text": "coding/testing.md",
+        "path": "./coding/testing.md"
+      },
+      {
+        "text": "tools/telemetry.md",
+        "path": "./tools/telemetry.md"
+      },
+      {
+        "text": "swarm/swarm.md",
+        "path": "./swarm/swarm.md"
+      },
+      {
+        "text": "context/context.md",
+        "path": "./context/context.md"
+      },
+      {
+        "text": "context/working-memory.md",
+        "path": "./context/working-memory.md"
+      },
+      {
+        "text": "context/long-horizon.md",
+        "path": "./context/long-horizon.md"
+      },
+      {
+        "text": "context/tool-design.md",
+        "path": "./context/tool-design.md"
+      },
+      {
+        "text": "context/deterministic-split.md",
+        "path": "./context/deterministic-split.md"
+      },
+      {
+        "text": "context/fractal-summaries.md",
+        "path": "./context/fractal-summaries.md"
+      },
+      {
+        "text": "context/examples.md",
+        "path": "./context/examples.md"
+      },
+      {
+        "text": "verification/verification.md",
+        "path": "./verification/verification.md"
+      },
+      {
+        "text": "verification/uat.md",
+        "path": "./verification/uat.md"
+      },
+      {
+        "text": "verification/plan-checking.md",
+        "path": "./verification/plan-checking.md"
+      },
+      {
+        "text": "verification/integration.md",
+        "path": "./verification/integration.md"
+      },
+      {
+        "text": "resilience/continue-here.md",
+        "path": "./resilience/continue-here.md"
+      },
+      {
+        "text": "resilience/context-pruning.md",
+        "path": "./resilience/context-pruning.md"
+      },
+      {
+        "text": "contracts/boundary-maps.md",
+        "path": "./contracts/boundary-maps.md"
+      },
+      {
+        "text": "strategies/discuss.md",
+        "path": "./strategies/discuss.md"
+      },
+      {
+        "text": "strategies/brownfield.md",
+        "path": "./strategies/brownfield.md"
+      },
+      {
+        "text": "strategies/research.md",
+        "path": "./strategies/research.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "./core/glossary.md"
+      },
+      {
+        "text": "templates/make-spec.md",
+        "path": "./templates/make-spec.md"
+      },
+      {
+        "text": "vbrief/vbrief.md",
+        "path": "./vbrief/vbrief.md"
+      },
+      {
+        "text": "core/ralph.md",
+        "path": "./core/ralph.md"
+      },
+      {
+        "text": "meta/code-field.md",
+        "path": "./meta/code-field.md"
+      },
+      {
+        "text": "meta/ideas.md",
+        "path": "./meta/ideas.md"
+      },
+      {
+        "text": "meta/lessons.md",
+        "path": "./meta/lessons.md"
+      },
+      {
+        "text": "meta/suggestions.md",
+        "path": "./meta/suggestions.md"
+      }
+    ],
+    "SKILL.md": [],
+    "SPECIFICATION.md": [
+      {
+        "text": "text",
+        "path": "path"
+      }
+    ],
+    "coding/coding.md": [
+      {
+        "text": "../main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "../tools/telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "../scm/git.md",
+        "path": "../scm/git.md"
+      },
+      {
+        "text": "../coding/testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "../tools/telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "../tools/taskfile.md",
+        "path": "../tools/taskfile.md"
+      },
+      {
+        "text": "../languages/cpp.md",
+        "path": "../languages/cpp.md"
+      },
+      {
+        "text": "../languages/go.md",
+        "path": "../languages/go.md"
+      },
+      {
+        "text": "../languages/python.md",
+        "path": "../languages/python.md"
+      },
+      {
+        "text": "../languages/typescript.md",
+        "path": "../languages/typescript.md"
+      },
+      {
+        "text": "../interfaces/cli.md",
+        "path": "../interfaces/cli.md"
+      },
+      {
+        "text": "../interfaces/tui.md",
+        "path": "../interfaces/tui.md"
+      },
+      {
+        "text": "../interfaces/web.md",
+        "path": "../interfaces/web.md"
+      },
+      {
+        "text": "../interfaces/rest.md",
+        "path": "../interfaces/rest.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      }
+    ],
+    "coding/testing.md": [
+      {
+        "text": "python.md",
+        "path": "./python.md#testing"
+      },
+      {
+        "text": "go.md",
+        "path": "./go.md#testing"
+      },
+      {
+        "text": "cpp.md",
+        "path": "./cpp.md#testing"
+      },
+      {
+        "text": "typescript.md",
+        "path": "./typescript.md#testing"
+      },
+      {
+        "text": "cli.md",
+        "path": "./cli.md#testing"
+      },
+      {
+        "text": "rest.md",
+        "path": "./rest.md#testing"
+      },
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      }
+    ],
+    "context/context.md": [
+      {
+        "text": "vbrief/vbrief.md",
+        "path": "../vbrief/vbrief.md"
+      },
+      {
+        "text": "meta/lessons.md",
+        "path": "../meta/lessons.md"
+      },
+      {
+        "text": "working-memory.md",
+        "path": "./working-memory.md"
+      },
+      {
+        "text": "REFERENCES.md",
+        "path": "../REFERENCES.md"
+      },
+      {
+        "text": "swarm/swarm.md",
+        "path": "../swarm/swarm.md"
+      },
+      {
+        "text": "long-horizon.md",
+        "path": "./long-horizon.md"
+      }
+    ],
+    "context/deterministic-split.md": [
+      {
+        "text": "context/tool-design.md",
+        "path": "./tool-design.md"
+      },
+      {
+        "text": "context/context.md",
+        "path": "./context.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      },
+      {
+        "text": "strategies/discuss.md",
+        "path": "../strategies/discuss.md"
+      },
+      {
+        "text": "tools/taskfile.md",
+        "path": "../tools/taskfile.md"
+      }
+    ],
+    "context/examples.md": [],
+    "context/fractal-summaries.md": [
+      {
+        "text": "context/context.md",
+        "path": "./context.md"
+      },
+      {
+        "text": "resilience/context-pruning.md",
+        "path": "../resilience/context-pruning.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      }
+    ],
+    "context/long-horizon.md": [
+      {
+        "text": "meta/lessons.md",
+        "path": "../meta/lessons.md"
+      }
+    ],
+    "context/tool-design.md": [],
+    "context/working-memory.md": [
+      {
+        "text": "meta/lessons.md",
+        "path": "../meta/lessons.md"
+      },
+      {
+        "text": "long-horizon.md",
+        "path": "./long-horizon.md"
+      },
+      {
+        "text": "vbrief/vbrief.md",
+        "path": "../vbrief/vbrief.md"
+      }
+    ],
+    "contracts/boundary-maps.md": [
+      {
+        "text": "coding/coding.md",
+        "path": "../coding/coding.md"
+      },
+      {
+        "text": "verification/verification.md",
+        "path": "../verification/verification.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      },
+      {
+        "text": "verification.md",
+        "path": "../verification/verification.md"
+      }
+    ],
+    "core/glossary.md": [
+      {
+        "text": "versioning.md",
+        "path": "./versioning.md"
+      },
+      {
+        "text": "resilience/context-pruning.md",
+        "path": "../resilience/context-pruning.md"
+      },
+      {
+        "text": "strategies/discuss.md",
+        "path": "../strategies/discuss.md"
+      },
+      {
+        "text": "context/fractal-summaries.md",
+        "path": "../context/fractal-summaries.md"
+      },
+      {
+        "text": "vbrief/vbrief.md",
+        "path": "../vbrief/vbrief.md"
+      },
+      {
+        "text": "verification/verification.md",
+        "path": "../verification/verification.md"
+      },
+      {
+        "text": "verification/verification.md",
+        "path": "../verification/verification.md"
+      },
+      {
+        "text": "resilience/context-pruning.md",
+        "path": "../resilience/context-pruning.md"
+      },
+      {
+        "text": "strategies/brownfield.md",
+        "path": "../strategies/brownfield.md"
+      },
+      {
+        "text": "verification/integration.md",
+        "path": "../verification/integration.md"
+      },
+      {
+        "text": "verification/plan-checking.md",
+        "path": "../verification/plan-checking.md"
+      },
+      {
+        "text": "verification/plan-checking.md",
+        "path": "../verification/plan-checking.md"
+      }
+    ],
+    "core/project.md": [
+      {
+        "text": "../main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "../languages/typescript.md",
+        "path": "../languages/typescript.md"
+      },
+      {
+        "text": "../tools/telemetry.md",
+        "path": "../tools/telemetry.md"
+      }
+    ],
+    "core/ralph.md": [
+      {
+        "text": "README.md",
+        "path": "./README.md"
+      },
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "python.md",
+        "path": "../languages/python.md"
+      },
+      {
+        "text": "go.md",
+        "path": "../languages/go.md"
+      }
+    ],
+    "core/versioning.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "git.md",
+        "path": "../scm/git.md"
+      },
+      {
+        "text": "github.md",
+        "path": "../scm/github.md"
+      },
+      {
+        "text": "scm/git.md",
+        "path": "../scm/git.md"
+      },
+      {
+        "text": "scm/github.md",
+        "path": "../scm/github.md"
+      }
+    ],
+    "deployments/README.md": [],
+    "deployments/agentuity/README.md": [],
+    "deployments/agentuity/via-cli.md": [],
+    "deployments/agentuity/via-cloud.md": [],
+    "deployments/agentuity/via-github-actions.md": [],
+    "deployments/agentuity/via-gravity-network.md": [],
+    "deployments/agentuity/via-vpc.md": [],
+    "deployments/aws/README.md": [],
+    "deployments/aws/via-app-runner.md": [],
+    "deployments/aws/via-ecs-fargate.md": [],
+    "deployments/aws/via-elastic-beanstalk.md": [],
+    "deployments/aws/via-lambda.md": [],
+    "deployments/azure/README.md": [],
+    "deployments/azure/via-aks.md": [],
+    "deployments/azure/via-app-service.md": [],
+    "deployments/azure/via-container-apps.md": [],
+    "deployments/azure/via-functions.md": [],
+    "deployments/cloud-gov/README.md": [],
+    "deployments/cloud-gov/agents/compliance-docs.md": [],
+    "deployments/cloud-gov/agents.md": [],
+    "deployments/cloud-gov/cicd.md": [],
+    "deployments/cloud-gov/deployment.md": [],
+    "deployments/cloud-gov/logging.md": [],
+    "deployments/cloud-gov/manifest.md": [],
+    "deployments/cloud-gov/overview.md": [],
+    "deployments/cloud-gov/security.md": [],
+    "deployments/cloud-gov/services.md": [],
+    "deployments/cloud-gov/upstream/README.md": [],
+    "deployments/cloudflare/README.md": [],
+    "deployments/cloudflare/via-dashboard.md": [
+      {
+        "text": "README.md",
+        "path": "./README.md"
+      },
+      {
+        "text": "via-git.md",
+        "path": "./via-git.md"
+      },
+      {
+        "text": "via-wrangler.md",
+        "path": "./via-wrangler.md"
+      }
+    ],
+    "deployments/cloudflare/via-git.md": [
+      {
+        "text": "README.md",
+        "path": "./README.md"
+      },
+      {
+        "text": "via-wrangler.md",
+        "path": "./via-wrangler.md"
+      },
+      {
+        "text": "via-github-actions.md",
+        "path": "./via-github-actions.md"
+      }
+    ],
+    "deployments/cloudflare/via-github-actions.md": [
+      {
+        "text": "README.md",
+        "path": "./README.md"
+      },
+      {
+        "text": "via-wrangler.md",
+        "path": "./via-wrangler.md"
+      },
+      {
+        "text": "via-git.md",
+        "path": "./via-git.md"
+      }
+    ],
+    "deployments/cloudflare/via-terraform.md": [
+      {
+        "text": "README.md",
+        "path": "./README.md"
+      },
+      {
+        "text": "via-wrangler.md",
+        "path": "./via-wrangler.md"
+      },
+      {
+        "text": "via-github-actions.md",
+        "path": "./via-github-actions.md"
+      }
+    ],
+    "deployments/cloudflare/via-wrangler.md": [
+      {
+        "text": "README.md",
+        "path": "./README.md"
+      },
+      {
+        "text": "via-git.md",
+        "path": "./via-git.md"
+      },
+      {
+        "text": "via-github-actions.md",
+        "path": "./via-github-actions.md"
+      }
+    ],
+    "deployments/fly-io/README.md": [],
+    "deployments/fly-io/via-dockerfile.md": [],
+    "deployments/fly-io/via-flyctl.md": [],
+    "deployments/fly-io/via-github-actions.md": [],
+    "deployments/fly-io/via-multi-region.md": [],
+    "deployments/google/README.md": [],
+    "deployments/google/via-app-engine.md": [],
+    "deployments/google/via-cloud-functions.md": [],
+    "deployments/google/via-cloud-run.md": [],
+    "deployments/google/via-gke.md": [],
+    "deployments/netlify/README.md": [],
+    "deployments/netlify/via-cli.md": [],
+    "deployments/netlify/via-functions.md": [],
+    "deployments/netlify/via-git.md": [],
+    "deployments/vercel/README.md": [],
+    "deployments/vercel/via-api.md": [],
+    "deployments/vercel/via-cli.md": [],
+    "deployments/vercel/via-git.md": [],
+    "docs/ai-coding-trust-paradox.md": [],
+    "docs/claude-code-integration.md": [
+      {
+        "text": "Deft Framework README",
+        "path": "../README.md"
+      },
+      {
+        "text": "Deft REFERENCES.md",
+        "path": "../deft/REFERENCES.md"
+      }
+    ],
+    "interfaces/cli.md": [
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "python.md",
+        "path": "../languages/python.md"
+      },
+      {
+        "text": "typescript.md",
+        "path": "../languages/typescript.md"
+      },
+      {
+        "text": "tui.md",
+        "path": "../interfaces/tui.md"
+      }
+    ],
+    "interfaces/rest.md": [
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "interfaces/tui.md": [],
+    "interfaces/web.md": [
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/6502-DASM.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      }
+    ],
+    "languages/c#.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/c.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/commands.md": [
+      {
+        "text": "taskfile.md",
+        "path": "../tools/taskfile.md#naming-conventions"
+      }
+    ],
+    "languages/cpp.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/dart.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/delphi.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/elixir.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/go.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/java.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/javascript.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "typescript.md",
+        "path": "./typescript.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/julia.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "`OtherFunction`",
+        "path": "@ref"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/kotlin.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/markdown.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "Setup",
+        "path": "./guide.md#setup"
+      },
+      {
+        "text": "mermaid.md",
+        "path": "./mermaid.md"
+      },
+      {
+        "text": "mermaid.md",
+        "path": "./mermaid.md"
+      }
+    ],
+    "languages/mermaid.md": [
+      {
+        "text": "markdown.md",
+        "path": "./markdown.md"
+      },
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      }
+    ],
+    "languages/python.md": [
+      {
+        "text": "../main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "../core/project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "../coding/testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "../coding/testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "../tools/telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "../coding/testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/r.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/rust.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/sql.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "taskfile.md",
+        "path": "../tools/taskfile.md#naming-conventions"
+      }
+    ],
+    "languages/swift.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/typescript.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/vhdl.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      }
+    ],
+    "languages/visual-basic.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "languages/zig.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "commands.md",
+        "path": "./commands.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "main.md": [
+      {
+        "text": "REFERENCES.md",
+        "path": "./REFERENCES.md"
+      },
+      {
+        "text": "coding/coding.md",
+        "path": "./coding/coding.md"
+      },
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "coding/coding.md",
+        "path": "./coding/coding.md"
+      },
+      {
+        "text": "languages/cpp.md",
+        "path": "./languages/cpp.md"
+      },
+      {
+        "text": "languages/go.md",
+        "path": "./languages/go.md"
+      },
+      {
+        "text": "languages/python.md",
+        "path": "./languages/python.md"
+      },
+      {
+        "text": "languages/typescript.md",
+        "path": "./languages/typescript.md"
+      },
+      {
+        "text": "interfaces/cli.md",
+        "path": "./interfaces/cli.md"
+      },
+      {
+        "text": "interfaces/tui.md",
+        "path": "./interfaces/tui.md"
+      },
+      {
+        "text": "interfaces/web.md",
+        "path": "./interfaces/web.md"
+      },
+      {
+        "text": "interfaces/rest.md",
+        "path": "./interfaces/rest.md"
+      },
+      {
+        "text": "tools/taskfile.md",
+        "path": "./tools/taskfile.md"
+      },
+      {
+        "text": "scm/git.md",
+        "path": "./scm/git.md"
+      },
+      {
+        "text": "scm/github.md",
+        "path": "./scm/github.md"
+      },
+      {
+        "text": "tools/telemetry.md",
+        "path": "./tools/telemetry.md"
+      },
+      {
+        "text": "coding/testing.md",
+        "path": "./coding/testing.md"
+      },
+      {
+        "text": "swarm/swarm.md",
+        "path": "./swarm/swarm.md"
+      },
+      {
+        "text": "templates/",
+        "path": "./templates/"
+      },
+      {
+        "text": "meta/",
+        "path": "./meta/"
+      },
+      {
+        "text": "vbrief/vbrief.md",
+        "path": "./vbrief/vbrief.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "context/context.md",
+        "path": "./context/context.md"
+      }
+    ],
+    "meta/SOUL.md": [],
+    "meta/code-field.md": [
+      {
+        "text": "../main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      }
+    ],
+    "meta/ideas.md": [],
+    "meta/lessons.md": [],
+    "meta/morals.md": [
+      {
+        "text": "../main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      }
+    ],
+    "meta/suggestions.md": [],
+    "old/project.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "typescript.md",
+        "path": "../languages/typescript.md"
+      },
+      {
+        "text": "taskfile.md",
+        "path": "../tools/taskfile.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      },
+      {
+        "text": "specification.md",
+        "path": "../templates/specification.md"
+      },
+      {
+        "text": "telemetry.md",
+        "path": "../tools/telemetry.md"
+      }
+    ],
+    "old/user.md": [
+      {
+        "text": "../main.md",
+        "path": "../main.md"
+      }
+    ],
+    "platforms/2600.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      }
+    ],
+    "resilience/context-pruning.md": [
+      {
+        "text": "context/context.md",
+        "path": "../context/context.md"
+      },
+      {
+        "text": "context/fractal-summaries.md",
+        "path": "../context/fractal-summaries.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      },
+      {
+        "text": "fractal-summaries.md",
+        "path": "../context/fractal-summaries.md"
+      },
+      {
+        "text": "strategies/discuss.md",
+        "path": "../strategies/discuss.md"
+      },
+      {
+        "text": "resilience/continue-here.md",
+        "path": "./continue-here.md"
+      },
+      {
+        "text": "continue-here.md",
+        "path": "./continue-here.md"
+      }
+    ],
+    "resilience/continue-here.md": [
+      {
+        "text": "context/long-horizon.md",
+        "path": "../context/long-horizon.md"
+      },
+      {
+        "text": "resilience/context-pruning.md",
+        "path": "./context-pruning.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      },
+      {
+        "text": "meta/lessons.md",
+        "path": "../meta/lessons.md"
+      }
+    ],
+    "scm/changelog.md": [
+      {
+        "text": "git.md",
+        "path": "./git.md"
+      },
+      {
+        "text": "github.md",
+        "path": "./github.md"
+      },
+      {
+        "text": "versioning.md",
+        "path": "../core/versioning.md"
+      },
+      {
+        "text": "versioning.md",
+        "path": "../core/versioning.md"
+      },
+      {
+        "text": "versioning.md",
+        "path": "../core/versioning.md"
+      },
+      {
+        "text": "git.md",
+        "path": "./git.md"
+      },
+      {
+        "text": "github.md",
+        "path": "./github.md"
+      }
+    ],
+    "scm/git.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "github.md",
+        "path": "../scm/github.md"
+      },
+      {
+        "text": "Keep a Changelog",
+        "path": "./changelog.md"
+      },
+      {
+        "text": "Semantic Versioning",
+        "path": "../core/versioning.md"
+      },
+      {
+        "text": "Keep a Changelog",
+        "path": "./changelog.md"
+      },
+      {
+        "text": "Semantic Versioning",
+        "path": "../core/versioning.md"
+      }
+    ],
+    "scm/github.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "project.md",
+        "path": "../core/project.md"
+      },
+      {
+        "text": "git.md",
+        "path": "../scm/git.md"
+      },
+      {
+        "text": "Semantic Versioning",
+        "path": "../core/versioning.md"
+      },
+      {
+        "text": "Keep a Changelog",
+        "path": "./changelog.md"
+      },
+      {
+        "text": "Keep a Changelog",
+        "path": "./changelog.md"
+      },
+      {
+        "text": "Keep a Changelog",
+        "path": "./changelog.md"
+      },
+      {
+        "text": "Semantic Versioning",
+        "path": "../core/versioning.md"
+      }
+    ],
+    "strategies/README.md": [
+      {
+        "text": "default.md",
+        "path": "./default.md"
+      },
+      {
+        "text": "speckit.md",
+        "path": "./speckit.md"
+      },
+      {
+        "text": "brownfield.md",
+        "path": "./brownfield.md"
+      },
+      {
+        "text": "research.md",
+        "path": "./research.md"
+      },
+      {
+        "text": "strategies/rapid.md",
+        "path": "../strategies/rapid.md"
+      }
+    ],
+    "strategies/brownfield.md": [
+      {
+        "text": "strategies/default.md",
+        "path": "./default.md"
+      },
+      {
+        "text": "strategies/discuss.md",
+        "path": "./discuss.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      },
+      {
+        "text": "strategies/brownfield.md",
+        "path": "./deft/strategies/brownfield.md"
+      }
+    ],
+    "strategies/default-yolo-harder.md": [],
+    "strategies/default.md": [],
+    "strategies/discuss.md": [
+      {
+        "text": "strategies/default.md",
+        "path": "./default.md"
+      },
+      {
+        "text": "strategies/speckit.md",
+        "path": "./speckit.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      }
+    ],
+    "strategies/research.md": [
+      {
+        "text": "strategies/default.md",
+        "path": "./default.md"
+      },
+      {
+        "text": "strategies/discuss.md",
+        "path": "./discuss.md"
+      },
+      {
+        "text": "strategies/brownfield.md",
+        "path": "./brownfield.md"
+      }
+    ],
+    "strategies/speckit.md": [
+      {
+        "text": "strategies/speckit.md",
+        "path": "./deft/strategies/speckit.md"
+      }
+    ],
+    "swarm/swarm.md": [
+      {
+        "text": "coding.md",
+        "path": "../coding/coding.md"
+      },
+      {
+        "text": "taskfile.md",
+        "path": "../tools/taskfile.md"
+      },
+      {
+        "text": "git.md",
+        "path": "../scm/git.md"
+      },
+      {
+        "text": "git.md",
+        "path": "../scm/git.md"
+      },
+      {
+        "text": "coding.md",
+        "path": "../coding/coding.md"
+      },
+      {
+        "text": "git.md",
+        "path": "../scm/git.md"
+      },
+      {
+        "text": "taskfile.md",
+        "path": "../tools/taskfile.md"
+      },
+      {
+        "text": "testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "templates/make-spec-example.md": [],
+    "templates/make-spec.md": [],
+    "templates/specification.md": [],
+    "todo.md": [],
+    "tools/RWLDL.md": [
+      {
+        "text": "taskfile.md",
+        "path": "./taskfile.md"
+      },
+      {
+        "text": "../coding/coding.md",
+        "path": "../coding/coding.md"
+      },
+      {
+        "text": "../coding/testing.md",
+        "path": "../coding/testing.md"
+      }
+    ],
+    "tools/taskfile.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "taskfile-migration.md",
+        "path": "./taskfile-migration.md"
+      },
+      {
+        "text": "taskfile-migration.md",
+        "path": "./taskfile-migration.md"
+      }
+    ],
+    "tools/telemetry.md": [
+      {
+        "text": "main.md",
+        "path": "../main.md"
+      },
+      {
+        "text": "coding.md",
+        "path": "../coding/coding.md"
+      }
+    ],
+    "vbrief/vbrief.md": [
+      {
+        "text": "context/working-memory.md",
+        "path": "../context/working-memory.md"
+      },
+      {
+        "text": "resilience/continue-here.md",
+        "path": "../resilience/continue-here.md"
+      },
+      {
+        "text": "context/long-horizon.md",
+        "path": "../context/long-horizon.md"
+      },
+      {
+        "text": "templates/make-spec.md",
+        "path": "../templates/make-spec.md"
+      },
+      {
+        "text": "meta/lessons.md",
+        "path": "../meta/lessons.md"
+      },
+      {
+        "text": "resilience/continue-here.md",
+        "path": "../resilience/continue-here.md"
+      }
+    ],
+    "verification/integration.md": [
+      {
+        "text": "verification/verification.md",
+        "path": "./verification.md"
+      },
+      {
+        "text": "contracts/boundary-maps.md",
+        "path": "../contracts/boundary-maps.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      }
+    ],
+    "verification/plan-checking.md": [
+      {
+        "text": "verification/verification.md",
+        "path": "./verification.md"
+      },
+      {
+        "text": "contracts/boundary-maps.md",
+        "path": "../contracts/boundary-maps.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      }
+    ],
+    "verification/uat.md": [
+      {
+        "text": "verification/verification.md",
+        "path": "./verification.md"
+      },
+      {
+        "text": "coding/testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      }
+    ],
+    "verification/verification.md": [
+      {
+        "text": "coding/testing.md",
+        "path": "../coding/testing.md"
+      },
+      {
+        "text": "verification/uat.md",
+        "path": "./uat.md"
+      },
+      {
+        "text": "core/glossary.md",
+        "path": "../core/glossary.md"
+      },
+      {
+        "text": "uat.md",
+        "path": "./uat.md"
+      }
+    ]
+  }
+}
