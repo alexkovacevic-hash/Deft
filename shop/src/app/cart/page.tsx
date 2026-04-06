@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { formatPrice } from "@/lib/utils";
 import {
@@ -11,64 +12,57 @@ import {
   ShoppingBag,
   ArrowRight,
   ShieldCheck,
-  ImageIcon,
   CreditCard,
+  ImageIcon,
 } from "lucide-react";
 
 interface CartItem {
   id: string;
+  billCode: string;
   name: string;
   category: string;
+  subCategory: string;
   msrp: number;
   quantity: number;
-  imageFilename: string;
+  imageName: string;
+  imageUrl: string;
 }
 
-// Demo cart items
-const initialItems: CartItem[] = [
-  {
-    id: "1",
-    name: "11x14 Gallery-Wrapped Canvas",
-    category: "Wall Décor",
-    msrp: 58.99,
-    quantity: 1,
-    imageFilename: "family-portrait.jpg",
-  },
-  {
-    id: "2",
-    name: "Print 8x10",
-    category: "Small Format Prints",
-    msrp: 3.99,
-    quantity: 3,
-    imageFilename: "beach-sunset.jpg",
-  },
-  {
-    id: "3",
-    name: "White Ceramic Mug 15 oz.",
-    category: "Drinkware",
-    msrp: 16.99,
-    quantity: 2,
-    imageFilename: "holiday-gathering.jpg",
-  },
-];
-
 export default function CartPage() {
-  const [items, setItems] = useState<CartItem[]>(initialItems);
+  const [items, setItems] = useState<CartItem[]>([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("cart");
+    if (stored) {
+      try {
+        setItems(JSON.parse(stored));
+      } catch {
+        setItems([]);
+      }
+    }
+    setLoaded(true);
+  }, []);
+
+  const saveCart = (newItems: CartItem[]) => {
+    setItems(newItems);
+    localStorage.setItem("cart", JSON.stringify(newItems));
+    window.dispatchEvent(new Event("cart-updated"));
+  };
 
   const updateQuantity = (id: string, delta: number) => {
-    setItems(
-      items
-        .map((item) =>
-          item.id === id
-            ? { ...item, quantity: Math.max(0, item.quantity + delta) }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
+    const updated = items
+      .map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.max(0, item.quantity + delta) }
+          : item
+      )
+      .filter((item) => item.quantity > 0);
+    saveCart(updated);
   };
 
   const removeItem = (id: string) => {
-    setItems(items.filter((item) => item.id !== id));
+    saveCart(items.filter((item) => item.id !== id));
   };
 
   const subtotal = items.reduce(
@@ -78,6 +72,15 @@ export default function CartPage() {
   const shipping = subtotal > 50 ? 0 : 7.99;
   const total = subtotal + shipping;
 
+  if (!loaded) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <div className="h-16 w-16 mx-auto mb-4 rounded-full bg-gray-100 animate-pulse" />
+        <div className="h-6 w-48 mx-auto bg-gray-100 rounded animate-pulse" />
+      </div>
+    );
+  }
+
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
@@ -86,7 +89,8 @@ export default function CartPage() {
           Your Cart is Empty
         </h1>
         <p className="mt-3 text-gray-500 max-w-sm mx-auto">
-          Start by browsing our products or uploading photos to your gallery.
+          Start by browsing our products and uploading a photo to create your
+          personalized product.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
           <Link href="/shop">
@@ -116,9 +120,23 @@ export default function CartPage() {
               key={item.id}
               className="flex gap-4 rounded-2xl bg-white p-4 ring-1 ring-gray-100"
             >
-              {/* Image placeholder */}
-              <div className="h-24 w-24 shrink-0 rounded-xl bg-gradient-to-br from-teal-50 to-gray-100 flex items-center justify-center">
-                <ImageIcon className="h-8 w-8 text-teal-300" />
+              {/* User's selected photo thumbnail */}
+              <div className="h-24 w-24 shrink-0 rounded-xl overflow-hidden bg-gray-100 relative">
+                {item.imageUrl && !item.imageUrl.startsWith("blob:") ? (
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.imageName}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="h-full w-full flex flex-col items-center justify-center">
+                    <ImageIcon className="h-6 w-6 text-teal-300 mb-1" />
+                    <span className="text-[10px] text-gray-400 text-center px-1 leading-tight">
+                      {item.imageName}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Info */}
@@ -129,8 +147,9 @@ export default function CartPage() {
                 <h3 className="text-sm font-semibold text-gray-900 mt-0.5">
                   {item.name}
                 </h3>
-                <p className="text-xs text-gray-400 mt-0.5">
-                  Photo: {item.imageFilename}
+                <p className="text-xs text-gray-400 mt-0.5 flex items-center gap-1">
+                  <ImageIcon className="h-3 w-3" />
+                  {item.imageName}
                 </p>
 
                 <div className="flex items-center justify-between mt-3">
