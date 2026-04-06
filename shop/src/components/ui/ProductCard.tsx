@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
-import { ShoppingCart, Star, Sparkles } from "lucide-react";
+import { Star, Sparkles } from "lucide-react";
+import { getProductImageUrl } from "@/data/products";
 
 interface ProductCardProps {
   name: string;
@@ -23,18 +25,19 @@ export function ProductCard({
   isBestSeller,
   isNew,
 }: ProductCardProps) {
+  const imageUrl = getProductImageUrl(name);
+
   return (
     <Link href={`/shop/product/${slug}`} className="group block">
       <div className="relative overflow-hidden rounded-2xl bg-gray-50 aspect-square">
-        {/* Placeholder image area */}
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-teal-50 to-gray-100 group-hover:from-teal-100 group-hover:to-gray-50 transition-colors duration-300">
-          <div className="text-center p-4">
-            <div className="mx-auto h-16 w-16 rounded-xl bg-white/80 flex items-center justify-center shadow-sm mb-3">
-              <ShoppingCart className="h-7 w-7 text-teal-600" />
-            </div>
-            <p className="text-xs text-gray-500 font-medium">{subCategory}</p>
-          </div>
-        </div>
+        {/* Product Image */}
+        <Image
+          src={imageUrl}
+          alt={name}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        />
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">

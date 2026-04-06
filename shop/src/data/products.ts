@@ -8,6 +8,10 @@ export function slugify(text: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
+export function getProductImageUrl(name: string): string {
+  return `/images/products/${slugify(name)}.jpg`;
+}
+
 export const products: ProductData[] = [
   { billCode: "4416", productCode: "PRGift;5475", category: "Small Format Prints", subCategory: "Silver Halide", name: "Print 4x4", msrp: 0.29, orderFee: 1.1, netPrice: 0.07 },
   { billCode: "2709", productCode: "Print;1016", category: "Small Format Prints", subCategory: "Silver Halide", name: "TruMobile® Print 4x5.3", msrp: 0.29, orderFee: 1.1, netPrice: 0.07 },

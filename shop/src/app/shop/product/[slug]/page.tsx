@@ -2,10 +2,11 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { formatPrice } from "@/lib/utils";
-import { products, slugify } from "@/data/products";
+import { products, slugify, getProductImageUrl } from "@/data/products";
 import {
   ShoppingCart,
   Heart,
@@ -15,7 +16,6 @@ import {
   Star,
   Sparkles,
   Check,
-  ImageIcon,
 } from "lucide-react";
 
 export default function ProductDetailPage() {
@@ -39,6 +39,8 @@ export default function ProductDetailPage() {
       </div>
     );
   }
+
+  const imageUrl = getProductImageUrl(product.name);
 
   const related = products
     .filter(
@@ -73,20 +75,26 @@ export default function ProductDetailPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Image Area */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-50 to-gray-50 aspect-square flex items-center justify-center">
-          <div className="text-center p-8">
-            <div className="mx-auto h-24 w-24 rounded-2xl bg-white/80 flex items-center justify-center shadow-sm mb-6">
-              <ImageIcon className="h-12 w-12 text-teal-600" />
+        <div className="relative overflow-hidden rounded-3xl bg-gray-50 aspect-square">
+          <Image
+            src={imageUrl}
+            alt={product.name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
+
+          {/* Upload overlay */}
+          <div className="absolute inset-0 flex items-end justify-center opacity-0 hover:opacity-100 transition-opacity bg-gradient-to-t from-black/40 to-transparent">
+            <div className="pb-6 text-center">
+              <Link href="/gallery">
+                <Button variant="outline" size="sm" className="border-white text-white hover:bg-white/20 hover:text-white">
+                  <Upload className="h-4 w-4 mr-2" />
+                  Upload your photo to preview
+                </Button>
+              </Link>
             </div>
-            <p className="text-gray-500 text-sm">
-              Upload a photo to preview it on this product
-            </p>
-            <Link href="/gallery">
-              <Button variant="outline" size="sm" className="mt-4">
-                <Upload className="h-4 w-4 mr-2" />
-                Choose from Gallery
-              </Button>
-            </Link>
           </div>
 
           {/* Badges */}
@@ -193,23 +201,32 @@ export default function ProductDetailPage() {
             You May Also Like
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-            {related.map((p, i) => (
-              <Link
-                key={`${p.billCode}-${i}`}
-                href={`/shop/product/${slugify(p.name + "-" + p.billCode)}`}
-                className="group block"
-              >
-                <div className="rounded-2xl bg-gradient-to-br from-teal-50 to-gray-50 aspect-square flex items-center justify-center group-hover:from-teal-100 transition-colors">
-                  <ImageIcon className="h-10 w-10 text-teal-600/40" />
-                </div>
-                <h3 className="mt-3 text-sm font-semibold text-gray-900 group-hover:text-teal-700 line-clamp-2">
-                  {p.name}
-                </h3>
-                <p className="text-sm font-bold text-gray-900 mt-1">
-                  {formatPrice(p.msrp)}
-                </p>
-              </Link>
-            ))}
+            {related.map((p, i) => {
+              const relatedImage = getProductImageUrl(p.name);
+              return (
+                <Link
+                  key={`${p.billCode}-${i}`}
+                  href={`/shop/product/${slugify(p.name + "-" + p.billCode)}`}
+                  className="group block"
+                >
+                  <div className="relative rounded-2xl bg-gray-50 aspect-square overflow-hidden">
+                    <Image
+                      src={relatedImage}
+                      alt={p.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 640px) 50vw, 25vw"
+                    />
+                  </div>
+                  <h3 className="mt-3 text-sm font-semibold text-gray-900 group-hover:text-teal-700 line-clamp-2">
+                    {p.name}
+                  </h3>
+                  <p className="text-sm font-bold text-gray-900 mt-1">
+                    {formatPrice(p.msrp)}
+                  </p>
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}
