@@ -8,7 +8,11 @@ export function slugify(text: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
-export function getProductImageUrl(name: string): string {
+export function getProductImageUrl(
+  name: string,
+  customImage?: string | null
+): string {
+  if (customImage) return customImage;
   return `/images/products/${slugify(name)}.jpg`;
 }
 
