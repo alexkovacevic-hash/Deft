@@ -90,6 +90,14 @@ DATABASE_URL="<production url>" npx prisma migrate deploy
 
 Set `MIGRATE_STRICT=1` if you would rather a migration problem fail the build.
 
+**Check a connection string before you deploy with it**, rather than finding out from a
+failed deploy. It reports the host, database and whether the string is pooled or direct,
+connects, and says whether the schema is applied — without printing the password:
+
+```bash
+DATABASE_URL="postgresql://…" npm run db:check
+```
+
 **Which connection string goes where.** Runtime and migrations want opposite things, so on a
 serverless host set both:
 
