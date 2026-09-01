@@ -75,24 +75,34 @@ npm run dev
 ## Deploying
 
 Set `DATABASE_URL`, `NEXTAUTH_SECRET` and `NEXTAUTH_URL` in the host's environment, then
-deploy. `npm run build` runs `prisma migrate deploy` before `next build`, so the schema is
-applied as part of every deploy — the first one creates all 18 tables.
+deploy. `npm run build` applies pending migrations before building, so the first deploy
+creates all 18 tables.
 
-Two things to get right:
+**The build does not require a database.** A build container often cannot reach production
+Postgres — the URL may be a build-time secret, the host may allowlist IPs, a preview deploy
+may have no database at all. If migrations cannot run, the build says why in detail and
+finishes anyway; the deployed app then reports a missing schema by name rather than failing
+generically. Apply them yourself when convenient:
 
-- **Use a direct database URL, not a pooled one.** If your host gives you both (Neon,
-  Supabase), `DATABASE_URL` must be the direct connection string. Migrations take a
-  Postgres advisory lock, which a transaction-mode pooler (pgbouncer, Supabase port 6543)
-  does not support, so `migrate deploy` will hang or fail against it.
-- **`NEXTAUTH_SECRET` must be set in production.** Without it sessions cannot be signed.
-  Generate one with `openssl rand -base64 32`.
+```bash
+DATABASE_URL="<production url>" npx prisma migrate deploy
+```
 
-If the app is up but every action returns an error, the message says which of these it is:
-a missing schema, an unreachable database and a refused connection each report themselves
-by name rather than as a generic failure.
+Set `MIGRATE_STRICT=1` if you would rather a migration problem fail the build.
 
-If a deploy fails with `P3005: the database schema is not empty`, that database was set up
-with `prisma db push` before migrations existed. Adopt it once:
+**Pooled connections.** Migrations take a Postgres advisory lock, which transaction-mode
+poolers (pgbouncer, Supabase port 6543) do not support. The build looks for a direct URL
+first and only falls back to `DATABASE_URL`:
+
+```
+DIRECT_URL  →  DATABASE_URL_UNPOOLED  →  POSTGRES_URL_NON_POOLING  →  DATABASE_URL
+```
+
+Neon on Vercel sets `DATABASE_URL_UNPOOLED` for you. For Supabase, set `DIRECT_URL` to the
+port 5432 connection string while `DATABASE_URL` stays pooled for runtime.
+
+If a deploy reports `P3005: the database schema is not empty`, that database was set up with
+`prisma db push` before migrations existed. Adopt it once:
 
 ```bash
 npx prisma migrate resolve --applied 20260901202537_init
