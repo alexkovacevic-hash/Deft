@@ -74,6 +74,46 @@ npm run dev
 
 ## Deploying
 
+### First deploy, from nothing
+
+The app needs a Postgres database. Create one before setting any variables — there is no
+`DATABASE_URL` value to invent, it comes from whoever hosts the database.
+
+1. **Create the database.** On Vercel: your project → **Storage** → **Create Database** →
+   Postgres (Neon), pick a region near your users. Connect it to the project and tick every
+   environment you deploy (Production, Preview, Development). Vercel then sets `DATABASE_URL`
+   and `DATABASE_URL_UNPOOLED` for you — nothing to paste.
+
+   Anywhere else, create a Postgres instance (Neon, Supabase and Railway all have free
+   tiers), copy its connection string, and set `DATABASE_URL` yourself.
+
+2. **Add the remaining variables** in the host's environment settings:
+
+   | Variable | Value |
+   | --- | --- |
+   | `NEXTAUTH_SECRET` | any 32-byte random string — `openssl rand -base64 32` |
+   | `NEXTAUTH_URL` | the deployed URL, e.g. `https://your-app.vercel.app` |
+   | `NEXT_PUBLIC_APP_URL` | the same URL; only used for Stripe redirects |
+
+3. **Check the string before you rely on it** (optional, but it turns a failed deploy into a
+   ten-second answer):
+
+   ```bash
+   DATABASE_URL="<paste it>" npm run db:check
+   ```
+
+4. **Redeploy.** Variables added after a build only take effect on the next one, so a
+   redeploy is required — the existing deployment will not pick them up.
+
+5. The build creates the tables, and `/signup` will create your studio.
+
+If something is still wrong, the app says which of these it is by name rather than failing
+generically — a missing variable, an unreachable host, a wrong database name, bad
+credentials or an unapplied schema each report themselves.
+
+### Details
+
+
 Set `DATABASE_URL`, `NEXTAUTH_SECRET` and `NEXTAUTH_URL` in the host's environment, then
 deploy. `npm run build` applies pending migrations before building, so the first deploy
 creates all 18 tables.
