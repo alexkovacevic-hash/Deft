@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { Plus } from "lucide-react";
@@ -17,7 +18,13 @@ function defaultDueDate(): string {
   return date.toISOString().slice(0, 10);
 }
 
-export function InvoiceDialogButton({ clients }: { clients: ClientOption[] }) {
+export function InvoiceDialogButton({
+  clients,
+  canAddClients = true,
+}: {
+  clients: ClientOption[];
+  canAddClients?: boolean;
+}) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
@@ -59,9 +66,25 @@ export function InvoiceDialogButton({ clients }: { clients: ClientOption[] }) {
     }
   }
 
+  // An invoice is billed to a client, so there is nothing to raise one against
+  // until one exists. Send them there instead of greying the button out.
+  if (clients.length === 0) {
+    return canAddClients ? (
+      <Link href="/studio/clients">
+        <Button size="sm">
+          <Plus className="h-4 w-4" /> Add a client first
+        </Button>
+      </Link>
+    ) : (
+      <Button size="sm" disabled title="Invoices are billed to a client, and your role cannot see or add clients.">
+        New invoice
+      </Button>
+    );
+  }
+
   return (
     <>
-      <Button size="sm" onClick={() => setOpen(true)} disabled={clients.length === 0}>
+      <Button size="sm" onClick={() => setOpen(true)}>
         <Plus className="h-4 w-4" /> New invoice
       </Button>
       <Modal

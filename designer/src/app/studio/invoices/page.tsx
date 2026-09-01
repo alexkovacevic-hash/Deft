@@ -41,7 +41,11 @@ export default async function InvoicesPage() {
       <PageHeader
         title="Invoices"
         description="Bill for hours and for items, and take payment online."
-        action={can(ctx, "invoices.manage") ? <InvoiceDialogButton clients={clients} /> : undefined}
+        action={
+          can(ctx, "invoices.manage") ? (
+            <InvoiceDialogButton clients={clients} canAddClients={can(ctx, "clients.manage")} />
+          ) : undefined
+        }
       />
 
       <div className="grid gap-4 sm:grid-cols-3">
@@ -53,9 +57,17 @@ export default async function InvoicesPage() {
       <div className="mt-6">
         {invoices.length === 0 ? (
           <EmptyState
-            title="No invoices yet"
-            description="Start a draft, then pull in unbilled time and approved items."
-            action={can(ctx, "invoices.manage") ? <InvoiceDialogButton clients={clients} /> : undefined}
+            title={clients.length === 0 ? "Start with a client" : "No invoices yet"}
+            description={
+              clients.length === 0
+                ? "Invoices are billed to a client, so add one first."
+                : "Start a draft, then pull in unbilled time and approved items."
+            }
+            action={
+              can(ctx, "invoices.manage") ? (
+                <InvoiceDialogButton clients={clients} canAddClients={can(ctx, "clients.manage")} />
+              ) : undefined
+            }
           />
         ) : (
           <Card>

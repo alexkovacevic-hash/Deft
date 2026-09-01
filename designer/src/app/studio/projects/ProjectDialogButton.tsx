@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Plus } from "lucide-react";
@@ -37,6 +38,7 @@ export function ProjectDialogButton({
   defaultClientId,
   label = "New project",
   variant = "primary",
+  canAddClients = true,
 }: {
   clients: { id: string; name: string }[];
   members: { id: string; name: string }[];
@@ -44,6 +46,7 @@ export function ProjectDialogButton({
   defaultClientId?: string;
   label?: string;
   variant?: "primary" | "outline";
+  canAddClients?: boolean;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -98,9 +101,30 @@ export function ProjectDialogButton({
     }
   }
 
+  // A project belongs to a client, so with none on file there is nothing to
+  // create against. Point at the step that unblocks it rather than greying out.
+  if (!project && clients.length === 0) {
+    return canAddClients ? (
+      <Link href="/studio/clients">
+        <Button size="sm" variant={variant}>
+          <Plus className="h-4 w-4" /> Add a client first
+        </Button>
+      </Link>
+    ) : (
+      <Button
+        size="sm"
+        variant={variant}
+        disabled
+        title="Projects belong to a client, and your role cannot see or add clients."
+      >
+        {label}
+      </Button>
+    );
+  }
+
   return (
     <>
-      <Button size="sm" variant={variant} onClick={() => setOpen(true)} disabled={!project && clients.length === 0}>
+      <Button size="sm" variant={variant} onClick={() => setOpen(true)}>
         {!project && <Plus className="h-4 w-4" />}
         {label}
       </Button>

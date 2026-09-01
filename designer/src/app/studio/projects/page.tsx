@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { can, projectScope, requireStudio } from "@/lib/tenant";
 import { formatDate, formatMoney } from "@/lib/utils";
+import { Button } from "@/components/ui/Button";
 import { Card, EmptyState, PageHeader } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/Badge";
 import { Table, Td, Th } from "@/components/ui/Table";
@@ -58,6 +59,7 @@ export default async function ProjectsPage({
           can(ctx, "projects.manage") ? (
             <ProjectDialogButton
               clients={clients}
+              canAddClients={can(ctx, "clients.manage")}
               members={members.map((m) => ({ id: m.user.id, name: m.user.name ?? m.user.email }))}
             />
           ) : undefined
@@ -80,10 +82,25 @@ export default async function ProjectsPage({
       </div>
 
       {projects.length === 0 ? (
-        <EmptyState
-          title={`No ${active.label.toLowerCase()} projects`}
-          description="Projects you create will show up here."
-        />
+        clients.length === 0 && can(ctx, "projects.manage") ? (
+          // Nothing here is creatable yet: every project belongs to a client.
+          <EmptyState
+            title="Start with a client"
+            description="Every project belongs to a client, so add one first — then their projects live under them."
+            action={
+              can(ctx, "clients.manage") ? (
+                <Link href="/studio/clients">
+                  <Button size="sm">Add a client</Button>
+                </Link>
+              ) : undefined
+            }
+          />
+        ) : (
+          <EmptyState
+            title={`No ${active.label.toLowerCase()} projects`}
+            description="Projects you create will show up here."
+          />
+        )
       ) : (
         <Card>
           <Table>
