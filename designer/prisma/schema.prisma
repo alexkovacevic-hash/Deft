@@ -1,0 +1,494 @@
+// Deft Designer — multi-tenant studio management for interior designers.
+//
+// Tenancy rule: every business record carries `organizationId`. All queries are
+// filtered by the caller's active organization (see src/lib/tenant.ts) so one
+// studio can never read another studio's data.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Tenancy, identity and access control
+// ---------------------------------------------------------------------------
+
+model Organization {
+  id                String   @id @default(cuid())
+  name              String
+  slug              String   @unique
+  logoUrl           String?
+  accentColor       String   @default("#0f766e")
+  currency          String   @default("USD")
+  defaultHourlyRate Decimal  @default(150) @db.Decimal(10, 2)
+  invoicePrefix     String   @default("INV")
+  invoiceTerms      String?  @db.Text
+  addressLine1      String?
+  addressLine2      String?
+  city              String?
+  state             String?
+  postalCode        String?
+  country           String?
+  phone             String?
+  website           String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  roles       Role[]
+  memberships Membership[]
+  clients     Client[]
+  projects    Project[]
+  selections  Selection[]
+  resources   SharedResource[]
+  timeEntries TimeEntry[]
+  invoices    Invoice[]
+  invites     Invitation[]
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  email          String    @unique
+  emailVerified  DateTime?
+  hashedPassword String?
+  image          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  accounts     Account[]
+  sessions     Session[]
+  memberships  Membership[]
+  clientAccess ClientUser[]
+  timeEntries  TimeEntry[]
+  ledProjects  Project[]        @relation("ProjectLead")
+  sharedItems  SharedResource[] @relation("ResourceAuthor")
+  payments     Payment[]        @relation("PaymentRecorder")
+  decisions    Selection[]      @relation("SelectionDecider")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+/// A named bundle of permission keys, owned by one organization so each studio
+/// can rename roles and re-cut permissions without affecting anyone else.
+model Role {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  description    String?
+  /// Permission keys from src/lib/permissions.ts (e.g. "projects.manage").
+  permissions    String[]
+  /// System roles are seeded on signup; the owner role cannot be deleted.
+  isSystem       Boolean  @default(false)
+  isOwnerRole    Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  memberships  Membership[]
+  invitations  Invitation[]
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+}
+
+model Membership {
+  id             String           @id @default(cuid())
+  organizationId String
+  userId         String
+  roleId         String
+  title          String?
+  /// Overrides the organization default when billing this member's time.
+  hourlyRate     Decimal?         @db.Decimal(10, 2)
+  status         MembershipStatus @default(ACTIVE)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role         Role         @relation(fields: [roleId], references: [id])
+
+  @@unique([organizationId, userId])
+  @@index([organizationId])
+}
+
+enum MembershipStatus {
+  ACTIVE
+  DISABLED
+}
+
+model Invitation {
+  id             String    @id @default(cuid())
+  organizationId String
+  email          String
+  roleId         String
+  token          String    @unique
+  expiresAt      DateTime
+  acceptedAt     DateTime?
+  createdAt      DateTime  @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  role         Role         @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, email])
+  @@index([organizationId])
+}
+
+// ---------------------------------------------------------------------------
+// Clients and projects
+// ---------------------------------------------------------------------------
+
+model Client {
+  id             String       @id @default(cuid())
+  organizationId String
+  name           String
+  contactName    String?
+  email          String?
+  phone          String?
+  addressLine1   String?
+  addressLine2   String?
+  city           String?
+  state          String?
+  postalCode     String?
+  country        String?
+  notes          String?      @db.Text
+  status         ClientStatus @default(ACTIVE)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  projects     Project[]
+  portalUsers  ClientUser[]
+  invoices     Invoice[]
+  resources    SharedResource[]
+
+  @@index([organizationId])
+  @@index([organizationId, status])
+}
+
+enum ClientStatus {
+  ACTIVE
+  ARCHIVED
+}
+
+/// Grants a user access to one client's portal. A household can have several
+/// logins (e.g. both spouses) with different capabilities.
+model ClientUser {
+  id                  String   @id @default(cuid())
+  clientId            String
+  userId              String
+  canApproveSelections Boolean @default(true)
+  canViewInvoices     Boolean  @default(true)
+  canPayInvoices      Boolean  @default(true)
+  createdAt           DateTime @default(now())
+
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([clientId, userId])
+  @@index([userId])
+}
+
+model Project {
+  id             String        @id @default(cuid())
+  organizationId String
+  clientId       String
+  name           String
+  description    String?       @db.Text
+  status         ProjectStatus @default(ACTIVE)
+  coverImageUrl  String?
+  startDate      DateTime?
+  targetDate     DateTime?
+  completedAt    DateTime?
+  budget         Decimal?      @db.Decimal(12, 2)
+  hourlyRate     Decimal?      @db.Decimal(10, 2)
+  leadUserId     String?
+  /// When false the project is hidden from the client portal entirely.
+  visibleToClient Boolean      @default(true)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  organization Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  client       Client           @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  lead         User?            @relation("ProjectLead", fields: [leadUserId], references: [id])
+  rooms        Room[]
+  selections   Selection[]
+  resources    SharedResource[]
+  timeEntries  TimeEntry[]
+  invoices     Invoice[]
+
+  @@index([organizationId, status])
+  @@index([clientId])
+}
+
+enum ProjectStatus {
+  LEAD
+  PROPOSAL
+  ACTIVE
+  ON_HOLD
+  COMPLETED
+  ARCHIVED
+}
+
+model Room {
+  id        String   @id @default(cuid())
+  projectId String
+  name      String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  project    Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  selections Selection[]
+
+  @@index([projectId])
+}
+
+// ---------------------------------------------------------------------------
+// Selections — the items a designer proposes and a client approves
+// ---------------------------------------------------------------------------
+
+model Selection {
+  id             String          @id @default(cuid())
+  organizationId String
+  projectId      String
+  roomId         String?
+  name           String
+  vendor         String?
+  sku            String?
+  description    String?         @db.Text
+  productUrl     String?
+  imageUrl       String?
+  quantity       Int             @default(1)
+  /// What the studio pays. Never exposed to the client portal.
+  unitCost       Decimal?        @db.Decimal(12, 2)
+  /// What the client pays per unit.
+  unitPrice      Decimal         @default(0) @db.Decimal(12, 2)
+  leadTimeWeeks  Int?
+  status         SelectionStatus @default(DRAFT)
+  designerNote   String?         @db.Text
+  clientNote     String?         @db.Text
+  decidedAt      DateTime?
+  decidedById    String?
+  sortOrder      Int             @default(0)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  organization Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  room         Room?             @relation(fields: [roomId], references: [id], onDelete: SetNull)
+  decidedBy    User?             @relation("SelectionDecider", fields: [decidedById], references: [id])
+  lineItems    InvoiceLineItem[]
+
+  @@index([projectId, status])
+  @@index([organizationId])
+}
+
+enum SelectionStatus {
+  DRAFT
+  PROPOSED
+  APPROVED
+  REJECTED
+  ORDERED
+  SHIPPED
+  DELIVERED
+  INSTALLED
+}
+
+// ---------------------------------------------------------------------------
+// Shared websites and links surfaced in the client portal
+// ---------------------------------------------------------------------------
+
+model SharedResource {
+  id             String       @id @default(cuid())
+  organizationId String
+  /// Scoped to a project, or to a client (all their projects) when projectId is null.
+  projectId      String?
+  clientId       String?
+  title          String
+  url            String
+  description    String?      @db.Text
+  imageUrl       String?
+  siteName       String?
+  category       ResourceKind @default(INSPIRATION)
+  visibleToClient Boolean     @default(true)
+  sortOrder      Int          @default(0)
+  createdById    String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project?     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  client       Client?      @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  createdBy    User?        @relation("ResourceAuthor", fields: [createdById], references: [id])
+
+  @@index([projectId])
+  @@index([clientId])
+  @@index([organizationId])
+}
+
+enum ResourceKind {
+  INSPIRATION
+  VENDOR
+  DOCUMENT
+  MOODBOARD
+  OTHER
+}
+
+// ---------------------------------------------------------------------------
+// Time tracking, invoicing and payments
+// ---------------------------------------------------------------------------
+
+model TimeEntry {
+  id             String   @id @default(cuid())
+  organizationId String
+  projectId      String
+  userId         String
+  workDate       DateTime
+  minutes        Int
+  description    String
+  /// Snapshotted at entry time so later rate changes don't rewrite history.
+  hourlyRate     Decimal  @db.Decimal(10, 2)
+  billable       Boolean  @default(true)
+  /// Set once the entry has been pulled onto an invoice.
+  invoicedAt     DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user         User              @relation(fields: [userId], references: [id])
+  lineItems    InvoiceLineItem[]
+
+  @@index([organizationId, workDate])
+  @@index([projectId])
+  @@index([userId])
+}
+
+model Invoice {
+  id             String        @id @default(cuid())
+  organizationId String
+  clientId       String
+  projectId      String?
+  number         String
+  status         InvoiceStatus @default(DRAFT)
+  issueDate      DateTime      @default(now())
+  dueDate        DateTime?
+  notes          String?       @db.Text
+  terms          String?       @db.Text
+  subtotal       Decimal       @default(0) @db.Decimal(12, 2)
+  discount       Decimal       @default(0) @db.Decimal(12, 2)
+  taxRate        Decimal       @default(0) @db.Decimal(5, 2)
+  taxAmount      Decimal       @default(0) @db.Decimal(12, 2)
+  total          Decimal       @default(0) @db.Decimal(12, 2)
+  amountPaid     Decimal       @default(0) @db.Decimal(12, 2)
+  sentAt         DateTime?
+  paidAt         DateTime?
+  stripeSessionId String?      @unique
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  organization Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  client       Client            @relation(fields: [clientId], references: [id])
+  project      Project?          @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  lineItems    InvoiceLineItem[]
+  payments     Payment[]
+
+  @@unique([organizationId, number])
+  @@index([organizationId, status])
+  @@index([clientId])
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PARTIALLY_PAID
+  PAID
+  VOID
+}
+
+model InvoiceLineItem {
+  id          String       @id @default(cuid())
+  invoiceId   String
+  kind        LineItemKind @default(CUSTOM)
+  description String
+  quantity    Decimal      @default(1) @db.Decimal(10, 2)
+  unitPrice   Decimal      @default(0) @db.Decimal(12, 2)
+  amount      Decimal      @default(0) @db.Decimal(12, 2)
+  selectionId String?
+  timeEntryId String?
+  sortOrder   Int          @default(0)
+
+  invoice   Invoice    @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  selection Selection? @relation(fields: [selectionId], references: [id], onDelete: SetNull)
+  timeEntry TimeEntry? @relation(fields: [timeEntryId], references: [id], onDelete: SetNull)
+
+  @@index([invoiceId])
+}
+
+enum LineItemKind {
+  TIME
+  ITEM
+  EXPENSE
+  CUSTOM
+}
+
+model Payment {
+  id           String        @id @default(cuid())
+  invoiceId    String
+  amount       Decimal       @db.Decimal(12, 2)
+  method       PaymentMethod @default(STRIPE)
+  reference    String?
+  note         String?
+  paidAt       DateTime      @default(now())
+  recordedById String?
+  createdAt    DateTime      @default(now())
+
+  invoice    Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  recordedBy User?   @relation("PaymentRecorder", fields: [recordedById], references: [id])
+
+  @@index([invoiceId])
+}
+
+enum PaymentMethod {
+  STRIPE
+  CHECK
+  CASH
+  ACH
+  WIRE
+  OTHER
+}

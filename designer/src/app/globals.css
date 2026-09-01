@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm, editorial palette suited to an interiors studio. */
+  --color-clay-50: #faf6f3;
+  --color-clay-100: #f3ebe4;
+  --color-clay-200: #e6d5c8;
+  --color-clay-300: #d4b8a4;
+  --color-clay-400: #bd947a;
+  --color-clay-500: #a97a5d;
+  --color-clay-600: #8f6249;
+  --color-clay-700: #744e3c;
+  --color-clay-800: #5d4033;
+  --color-clay-900: #4a352b;
+
+  --color-ink-50: #f7f7f6;
+  --color-ink-100: #e6e5e2;
+  --color-ink-200: #cbc9c4;
+  --color-ink-300: #a8a49d;
+  --color-ink-400: #837e76;
+  --color-ink-500: #67625b;
+  --color-ink-600: #514d47;
+  --color-ink-700: #413e39;
+  --color-ink-800: #2b2926;
+  --color-ink-900: #1c1a18;
+
+  --color-sage-100: #e8efe9;
+  --color-sage-500: #6f8f77;
+  --color-sage-700: #4e6a55;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-clay-50);
+  color: var(--color-ink-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.display {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
