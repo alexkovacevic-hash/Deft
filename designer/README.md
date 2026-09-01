@@ -90,16 +90,28 @@ DATABASE_URL="<production url>" npx prisma migrate deploy
 
 Set `MIGRATE_STRICT=1` if you would rather a migration problem fail the build.
 
-**Pooled connections.** Migrations take a Postgres advisory lock, which transaction-mode
-poolers (pgbouncer, Supabase port 6543) do not support. The build looks for a direct URL
-first and only falls back to `DATABASE_URL`:
+**Which connection string goes where.** Runtime and migrations want opposite things, so on a
+serverless host set both:
+
+| Variable | Use | Why |
+| --- | --- | --- |
+| `DATABASE_URL` | the **pooled** string | Serverless opens a connection per invocation. A provider's direct endpoint will exhaust its connection limit, and Supabase's is IPv6-only, which most serverless platforms cannot reach at all. |
+| `DIRECT_URL` | the **direct** string | Migrations take a Postgres advisory lock, which transaction-mode poolers (pgbouncer, Supabase port 6543) do not support. Only the build uses this. |
+
+By provider:
+
+- **Neon on Vercel** — nothing to do. The integration sets `DATABASE_URL` and
+  `DATABASE_URL_UNPOOLED`, and the build picks the unpooled one up automatically.
+- **Supabase** — `DATABASE_URL` = the pooled string (port 6543), `DIRECT_URL` = the same
+  credentials on port 5432.
+- **A single Postgres you manage** — set `DATABASE_URL` only; it serves both.
+
+The build resolves the migration URL in this order, so `DIRECT_URL` is only needed when the
+host doesn't provide one of the others:
 
 ```
 DIRECT_URL  →  DATABASE_URL_UNPOOLED  →  POSTGRES_URL_NON_POOLING  →  DATABASE_URL
 ```
-
-Neon on Vercel sets `DATABASE_URL_UNPOOLED` for you. For Supabase, set `DIRECT_URL` to the
-port 5432 connection string while `DATABASE_URL` stays pooled for runtime.
 
 If a deploy reports `P3005: the database schema is not empty`, that database was set up with
 `prisma db push` before migrations existed. Adopt it once:
@@ -112,7 +124,8 @@ npx prisma migrate resolve --applied 20260901202537_init
 
 | Variable | Purpose |
 | --- | --- |
-| `DATABASE_URL` | PostgreSQL connection string |
+| `DATABASE_URL` | PostgreSQL connection string — the **pooled** one on a serverless host |
+| `DIRECT_URL` | optional; the **direct** string, used only to run migrations |
 | `NEXTAUTH_SECRET` | session signing secret (`openssl rand -base64 32`) |
 | `NEXTAUTH_URL` | the app's public URL |
 | `NEXT_PUBLIC_APP_URL` | used for Stripe success/cancel redirects |
